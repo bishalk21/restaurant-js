@@ -66,7 +66,7 @@ openMenu.addEventListener("click", () => {
   bodyDocument.classList.add("bodyMenuOpen");
 
   // mobile fade
-  mobileLinks.forEach((link, index) => {
+  mobileLinks.forEach((mobilelink, index) => {
     mobilelink.style.animation = `mobilefade 0.5s ease forwards ${
       index / 7 + 0.5
     }s`;
@@ -88,7 +88,7 @@ closeMenu.addEventListener("click", () => {
   bodyDocument.classList.remove("bodyMenuOpen");
 
   // mobile fade
-  mobileLinks.forEach((link, index) => {
+  mobileLinks.forEach((mobilelink, index) => {
     mobilelink.style.animation = "";
   });
 });
