@@ -3,6 +3,7 @@ const body = document.body;
 
 let lastScroll = 0;
 
+// on scrolling up down
 window.addEventListener("scroll", () => {
   const currentScroll = window.pageYOffset;
   //   console.log(currentScroll);
@@ -25,7 +26,7 @@ window.addEventListener("scroll", () => {
   }
 
   lastScroll = currentScroll;
-  console.log(lastScroll);
+  //   console.log(lastScroll);
 });
 
 // for scroll to top button
@@ -91,4 +92,57 @@ closeMenu.addEventListener("click", () => {
   mobileLinks.forEach((mobilelink, index) => {
     mobilelink.style.animation = "";
   });
+});
+
+// Animation
+const scrollElements = document.querySelectorAll(".js-scroll");
+console.log(scrollElements);
+
+const displayScrollElement = (element) => {
+  element.classList.add("scrolled");
+};
+
+const hideScrollElement = (element) => {
+  element.classList.remove("scrolled");
+};
+
+const isElementInViewport = (el, dividend = 1) => {
+  const elementTop = el.getBoundingClientRect().top;
+  //   console.log(elementTop);
+
+  return (
+    elementTop <=
+    (window.innerHeight || document.documentElement.clientHeight) / dividend
+  );
+};
+
+const ElementNotInViewport = (el) => {
+  const elementTop = el.getBoundingClientRect().top;
+
+  return (
+    elementTop > (window.innerHeight || document.documentElement.clientHeight)
+  );
+};
+
+const handleScrollAnimation = () => {
+  scrollElements.forEach((element) => {
+    if (isElementInViewport(element, 1.25)) {
+      displayScrollElement(element);
+    } else if (ElementNotInViewport(element)) {
+      hideScrollElement(element);
+    }
+  });
+};
+
+let throttleTimer;
+const throttle = (cb, time) => {
+  if (throttleTimer) return;
+  setTimeout(() => {
+    cb();
+    throttleTimer = false;
+  }, time);
+};
+
+window.addEventListener("scroll", () => {
+  throttle(handleScrollAnimation, 250);
 });
