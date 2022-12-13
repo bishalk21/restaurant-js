@@ -96,6 +96,19 @@ li {
     list-style-type: none;
 }
 
+.link {
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    font-weight: 500;
+    background: linear-gradient(90deg, currentColor calc(100%/3), transparent 0 calc(200%/3), currentColor 0) var(--d, 0%) 100% /300% 3px no-repeat;
+    transition: 0.5s;
+    border-radius: 3px;
+}
+
+.link:hover {
+    --d: 100%;
+}
+
 /* img {
     width: 100%;
     height: 100%;
@@ -104,6 +117,45 @@ li {
 
 .border-radius-img {
     border-radius: var(--border-radius);
+}
+
+.section-title {
+    font-family: var(--serif-font);
+    font-weight: 700;
+    font-size: 3.2rem;
+    text-align: center;
+}
+
+.section-sub {
+    font-size: 1.3rem;
+    font-weight: 400;
+    text-align: center;
+    position: relative;
+    color: var(--secondary-light-color);
+}
+
+.sm-text {
+    font-family: var(--secondary-font);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--sm-text);
+    letter-spacing: 0.3px;
+}
+
+.paragraph {
+    margin-bottom: 1rem;
+}
+
+/* in case of light body */
+.light-body .sm-text {
+    color: var(--dark-sm-text);
+    font-size: 1.2rem;
+    line-height: 1.6;
+    letter-spacing: 0.8px;
+}
+
+.light-body .section-sub {
+    color: var(--secondary-black);
 }
 
 /* Scroll to TOP BTN */
@@ -525,6 +577,33 @@ body.bodyMenuOpen {
     }
 }
 
+.js-scroll {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.js-scroll.scrolled {
+    opacity: 1;
+}
+
+.scrolled.fade-in-bottom {
+    animation: fade-in-bottom 1s ease-in-out both;
+}
+
+@keyframes fade-in-bottom {
+    0% {
+        -webkit-transform: translateY(50px);
+        opacity: 0;
+        transform: translateY(50px);
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .animation-main-title-container,
 .animation-sub-container,
 .btn-animation {
@@ -632,37 +711,127 @@ body.bodyMenuOpen {
     font-size: 1.1rem;
 }
 
-.js-scroll {
-    opacity: 0;
-    transition: opacity 0.3s ease;
+/* RESERVATIONS */
+.book-a-reservation {
+    height: 70vh;
+    background: url("../images/revervation-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 3;
 }
 
-.js-scroll.scrolled {
-    opacity: 1;
+.book-a-reservation::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(4, 3, 14, 0.5);
+    z-index: -1;
 }
 
-.scrolled.fade-in-bottom {
-    animation: fade-in-bottom 1s ease-in-out both;
+.book-reservation-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
 }
 
-@keyframes fade-in-bottom {
-    0% {
-        -webkit-transform: translateY(50px);
-        opacity: 0;
-        transform: translateY(50px);
-    }
+.book {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 3rem;
+    line-height: 1;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.2);
+}
 
-    100% {
-        -webkit-transform: translateY(0);
-        opacity: 1;
-        transform: translateY(0);
-    }
+.book-btn:hover {
+    background: var(--primary-cta-hover);
+    border-radius: 20px 20px 20px 20px;
+}
+
+/* About US */
+.light-body .dot {
+    background: var(--secondary-black);
+}
+
+.light-body .section-sub::before,
+.light-body .section-sub::after {
+    background: var(--secondary-black);
+}
+
+.section-sub::after {
+    content: "";
+    position: absolute;
+    bottom: -0.5rem;
+    background: var(--secondary-light-color);
+    height: 2px;
+    width: 2rem;
+    left: 46%;
+    border-radius: 15px;
+}
+
+.section-sub::before {
+    content: "";
+    position: absolute;
+    bottom: -0.5rem;
+    background: var(--secondary-light-color);
+    height: 2px;
+    width: 2rem;
+    right: 46%;
+    border-radius: 15px;
+}
+
+.dot {
+    height: 0.3rem;
+    width: 0.3rem;
+    background: var(--secondary-light-color);
+    left: 50%;
+    bottom: -0.6rem;
+    position: absolute;
+    transform: translate(-50%);
+    border-radius: 45px;
+}
+
+.home-about-content {
+    padding-top: 5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5%;
+}
+
+.home-about-text {
+    position: relative;
+    width: 45%;
+}
+
+.home-anout-img {
+    width: 45%;
+    position: relative;
+}
+
+.home-about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
 }
 
 /* MEDIA QUERIES */
 @media all and (max-width:1024px) {
     .container {
         width: 95%;
+    }
+
+    .link {
+        font-size: 1.1rem;
+        background: linear-gradient(90deg, currentColor calc(100%/3), transparent 0 calc(100%/3), currentColor 0) var(--d, 0%) 100% /300% 2px no-repeat;
     }
 
     /* NAVBAR */
@@ -680,6 +849,37 @@ body.bodyMenuOpen {
 
     .section-title {
         font-size: 2.5rem;
+    }
+
+    .sm-text {
+        font-size: 1rem;
+        line-height: 1.7rem;
+    }
+
+    .row {
+        width: 100%;
+    }
+
+    .btn {
+        font-size: 1rem;
+    }
+
+    .serve-card {
+        height: 15rem;
+        width: 18rem;
+    }
+
+    .home-about-content {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .home-about-text {
+        margin-bottom: 2rem;
+    }
+
+    .home-about-img {
+        height: 20rem;
     }
 }
 
@@ -761,6 +961,15 @@ body.bodyMenuOpen {
     .btn {
         font-size: 14px;
     }
+
+    .book-a-reservation {
+        height: 50vh;
+    }
+
+    .book {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+    }
 }
 
 @media all and (max-width: 580px) {
@@ -813,6 +1022,15 @@ body.bodyMenuOpen {
     .section-title {
         font-size: 2.3rem;
     }
+
+    .home-about-img {
+        height: 15rem;
+        margin-top: 1.5rem;
+    }
+
+    .book-a-reservation {
+        height: 40vh;
+    }
 }
 
 @media all and (max-width: 520px) {}
@@ -820,6 +1038,10 @@ body.bodyMenuOpen {
 @media all and (max-width: 480px) {
     .menu-title {
         font-size: 2.7rem;
+    }
+
+    .book {
+        font-size: 2rem;
     }
 }
 

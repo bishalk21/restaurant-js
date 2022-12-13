@@ -137,6 +137,8 @@ const handleScrollAnimation = () => {
 let throttleTimer;
 const throttle = (cb, time) => {
   if (throttleTimer) return;
+
+  throttleTimer = true;
   setTimeout(() => {
     cb();
     throttleTimer = false;
