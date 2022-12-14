@@ -894,8 +894,190 @@ body.bodyMenuOpen {
     font-weight: 500;
 }
 
+/* GALLERY */
+#home-gallery {
+    padding-bottom: 7rem;
+    position: relative;
+}
+
+#home-gallery::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    bottom: 50%;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: var(--light--bg-color);
+    z-index: -1;
+}
+
+.home-gallery-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 4rem;
+}
+
+.home-gallery-card {
+    width: 22rem;
+    height: 18rem;
+    margin: 1rem;
+    position: relative;
+
+    box-shadow: 0 8px 15px rgba(80, 81, 82, 0.3);
+    transition: 0.3s ease;
+}
+
+.home-gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* border-radius: 10px; */
+}
+
+.home-gallery-card::after {
+    content: "";
+    position: absolute;
+    inset: 0 0 0 0;
+    background: rgba(4, 3, 14, 0.5);
+    z-index: 1;
+}
+
+.home-gallery-card span {
+    position: absolute;
+    left: 2rem;
+    bottom: 2rem;
+    z-index: 2;
+}
+
+/* TESTIMONIALS */
+#testimonials {
+    position: relative;
+}
+
+.carousel-wrapper {
+    /* position: relative; */
+    /* overflow: hidden; */
+    width: 50%;
+    margin: 0 auto;
+}
+
+.carousel-item .testimonial {
+    padding: 3rem 0 7rem 0;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    /* margin: 0 auto; */
+}
+
+.carousel-container {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    width: 500%;
+    transition: transform 0.3s cubic-bezier(0.694, 0.0482, 0.335, 1);
+}
+
+.carousel-item {
+    position: relative;
+    float: left;
+    width: 20%;
+}
+
+.testimonial-user {
+    display: flex;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+.user {
+    height: 2.5rem;
+    width: 2.5rem;
+    border-radius: 45px;
+    margin-right: 1.5rem;
+}
+
+.user img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 45px;
+}
+
+.user-name span {
+    font-size: 1rem;
+    font-style: italic;
+}
+
+/* PAGINATIONS */
+.carousel-pagination {
+    list-style: none;
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    right: 0;
+    width: 50%;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.carousel-bullet {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    margin: 0 7px;
+    background-color: var(--light-gray);
+    cursor: pointer;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition-property: transform, opacity, background-color;
+    transition-duration: 0.3s;
+}
+
+.carousel-bullet:hover {
+    transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+}
+
+.carousel-bullet.active-bullet,
+.carousel-bullet.active-bullet:hover {
+    opacity: 1;
+    transform: scale(1.3);
+    -webkit-transform: scale(1.3);
+    background-color: var(--white);
+    cursor: default;
+}
+
+.light-body .carousel-bullet {
+    background-color: var(--secondary-black);
+}
+
+.light-body .carousel-bullet.active-bullet,
+.light-body .carousel-bullet.active-bullet:hover {
+    background-color: var(--secondary-black);
+}
+
+/* BANNER */
+.overlay {
+    position: relative;
+    z-index: 1;
+}
+
 /* MEDIA QUERIES */
-@media all and (max-width: 1050px) {}
+@media all and (max-width: 1050px) {
+    .home-gallery-content {
+        flex-wrap: wrap;
+    }
+}
 
 @media all and (max-width:1024px) {
     .container {
@@ -981,6 +1163,20 @@ body.bodyMenuOpen {
 
     .prof-img {
         margin-bottom: 2rem;
+    }
+
+    .home-gallery-content {
+        flex-wrap: wrap;
+    }
+
+    .home-gallery-card {
+        width: 18rem;
+        height: 15rem;
+    }
+
+    .testimonial-content .sm-text {
+        font-size: 1rem;
+        line-height: 1.7rem;
     }
 }
 
@@ -1079,6 +1275,23 @@ body.bodyMenuOpen {
         width: 100%;
         margin-bottom: 0.5rem;
         gap: 0;
+    }
+
+    .professional-text .sm-text {
+        font-size: 1rem;
+    }
+
+    .carousel-item .testimonial {
+        width: 90%;
+    }
+
+    .user-name {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .user-name span {
+        font-size: 0.8rem;
     }
 }
 
