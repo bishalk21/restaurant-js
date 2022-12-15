@@ -589,6 +589,11 @@ body.bodyMenuOpen {
     }
 }
 
+.home-gallery-card.js-scroll {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
 .js-scroll {
     opacity: 0;
     transition: opacity 0.3s ease;
@@ -952,7 +957,7 @@ body.bodyMenuOpen {
 }
 
 /* TESTIMONIALS */
-#testimonials {
+#§ {
     position: relative;
 }
 
@@ -1072,6 +1077,54 @@ body.bodyMenuOpen {
     z-index: 1;
 }
 
+.overlay::before,
+.overlay::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(4, 3, 14, 0.5);
+    z-index: -1;
+}
+
+#banner {
+    position: relative;
+    height: 25rem;
+    background: url("https://images.unsplash.com/photo-1533777857889-4be7c70b33f7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80") no-repeat center center/cover
+}
+
+#banner::after {
+    content: "";
+}
+
+.banner-text {
+    font-size: 4rem;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 700;
+    line-height: 1.1;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.2);
+    font-family: var(--serif-font);
+}
+
+.banner-text::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.301);
+    width: 50%;
+    margin: auto;
+    z-index: -1;
+    border-radius: var(--border-radius);
+}
+
 /* MEDIA QUERIES */
 @media all and (max-width: 1050px) {
     .home-gallery-content {
@@ -1177,6 +1230,10 @@ body.bodyMenuOpen {
     .testimonial-content .sm-text {
         font-size: 1rem;
         line-height: 1.7rem;
+    }
+
+    .banner-text {
+        font-size: 3rem;
     }
 }
 
@@ -1293,6 +1350,14 @@ body.bodyMenuOpen {
     .user-name span {
         font-size: 0.8rem;
     }
+
+    #banner {
+        height: 18rem;
+    }
+
+    .banner-text {
+        font-size: 2.5rem;
+    }
 }
 
 @media all and (max-width: 580px) {
@@ -1364,6 +1429,14 @@ body.bodyMenuOpen {
     }
 
     .book {
+        font-size: 2rem;
+    }
+
+    #banner {
+        height: 40vh;
+    }
+
+    .banner-text {
         font-size: 2rem;
     }
 }
