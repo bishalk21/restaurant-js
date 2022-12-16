@@ -1601,6 +1601,18 @@ body.bodyMenuOpen {
     .banner-text {
         font-size: 2rem;
     }
+
+    .menu-links,
+    .smallLinks,
+    .menuContent-img {
+        display: none;
+    }
+
+
 }
 
-@media all and (max-width: 380px) {}
+@media all and (max-width: 380px) {
+    .menuContent .mobileSmallLinks {
+        display: none;
+    }
+}
