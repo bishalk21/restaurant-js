@@ -1432,11 +1432,11 @@ body.bodyMenuOpen {
     }
 
     /* =========================================== */
-    .menu-links,
+    /* .menu-links,
     .smallLinks,
     .menuContent-img {
-        /* display: none; */
-    }
+        display: none;
+    } */
 
     .mobile-links-container {
         display: block;
