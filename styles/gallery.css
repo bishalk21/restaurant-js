@@ -44,6 +44,31 @@
     background: #fff;
 }
 
+.secondary-btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background: var(--dark--bg-color);
+    position: relative;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 3rem;
+    transition: 0.3s ease;
+}
+
+.secondary-btn::after {
+    position: absolute;
+    content: "";
+    inset: 0;
+    border: 1px solid #fff;
+    border-radius: var(--border-radius);
+}
+
+.secondary-btn:hover {
+    /* background: #fff;
+    color: var(--dark--bg-color); */
+    transform: translateY(-5px);
+}
+
 .gallery-section .secondary-btn {
     margin: 1.5rem 0;
 }
