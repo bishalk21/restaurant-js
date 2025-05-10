@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
-import SearchBar from "./SearchBar";
+import SearchBar from "../search-bar/SearchBar";
 import { ShoppingCart, Menu, X } from "lucide-react";
 import "./header.css";
 import CartContext from "../../context/CartContext";
