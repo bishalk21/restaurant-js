@@ -4,6 +4,7 @@ import Header from "./header/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "../pages/home/HomePage";
 import Footer from "./footer/Footer";
+import AboutPage from "../pages/about/AboutPage";
 
 const AppLayout = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -23,6 +24,7 @@ const AppLayout = () => {
           <Header />
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/about" element={<AboutPage />} />
           </Routes>
           <Footer />
         </BrowserRouter>
