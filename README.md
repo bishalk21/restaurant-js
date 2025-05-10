@@ -46,7 +46,7 @@ Hamro Bhojan is built using React.js, but without CRA (Create React App or any o
         - Rating
         - View Menu Button
             - Recipe List
-                - Recipe Card
+                - Recipe Cards
                 - Image
                 - Title
                 - Description
@@ -70,4 +70,6 @@ Hamro Bhojan is built using React.js, but without CRA (Create React App or any o
 
 ```bash
 not using keys (not acceptable) <<< index as key={index} <<< unique id as key={uniqueId} (best practice)
+
+never keep hardcoded data in the component files, always keep it in a separate file and import it into the component file. (best practice)
 ```

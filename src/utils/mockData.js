@@ -1,71 +1,281 @@
-// Mock data for restaurants
 export const mockRestaurants = [
   {
-    id: 1,
-    name: "Himalayan Kitchen",
-    cloudinaryImageId:
-      "https://images.unsplash.com/photo-1728910107534-e04e261768ae?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8MHx8fDA%3D",
-    description:
-      "Authentic Nepali cuisine in a cozy atmosphere. Known for their momos and thalis.",
-    avgRating: 4.7,
-    cuisines: ["Nepali", "Indian", "Tibetan"],
-    sla: {
-      deliveryTime: 30,
-      lastMileTravel: 2.5,
-      serviceability: "SERVICEABLE",
-      distance: "2.5 km",
-      slaString: "25-30 mins",
+    info: {
+      id: 1,
+      name: "Himalayan Kitchen",
+      cloudinaryImageId:
+        "https://images.unsplash.com/photo-1741342302331-580c5bf6ee69?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8Mnx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+      description:
+        "Authentic Nepali cuisine in a cozy atmosphere. Known for their momos and thalis.",
+      sla: {
+        deliveryTime: 35,
+        lastMileTravel: 4.2,
+        lastMileTravelString: "4.2 km",
+        serviceability: "SERVICEABLE",
+        slaString: "30-35 mins",
+      },
+      avgRating: 4.7,
+      cuisines: ["Nepali", "Indian", "Fusion"],
+      items: [
+        {
+          id: 101,
+          name: "Chicken Momo",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Steamed dumplings filled with spiced chicken and served with tomato chutney.",
+          price: 8.99,
+          category: "Appetizers",
+        },
+        {
+          id: 102,
+          name: "Vegetable Thali",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "A complete meal with rice, lentil soup, vegetable curry, pickles, and yogurt.",
+          price: 12.99,
+          category: "Main Course",
+        },
+        {
+          id: 103,
+          name: "Lamb Sekuwa",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description: "Grilled marinated lamb pieces with Nepali spices.",
+          price: 14.99,
+          category: "Main Course",
+        },
+        {
+          id: 104,
+          name: "Aloo Tama",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "A tangy and spicy curry made with potatoes, bamboo shoots, and black-eyed peas.",
+          price: 10.99,
+          category: "Main Course",
+        },
+        {
+          id: 105,
+          name: "Sel Roti",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Traditional sweet rice bread rings, perfect for dessert or snack.",
+          price: 6.99,
+          category: "Desserts",
+        },
+      ],
     },
   },
   {
-    id: 2,
-    name: "Kathmandu Cafe",
-    cloudinaryImageId:
-      "https://images.unsplash.com/photo-1728910156510-77488f19b152?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8MHx8fDA%3D",
-    description:
-      "Modern take on traditional Nepali dishes. Great for lunch and dinner.",
-    avgRating: 4.5,
-    cuisines: ["Nepali", "Asian", "Fusion"],
-    sla: {
-      deliveryTime: 25,
-      lastMileTravel: 1.8,
-      serviceability: "SERVICEABLE",
-      distance: "1.8 km",
-      slaString: "20-25 mins",
+    info: {
+      id: 2,
+      name: "Kathmandu Cafe",
+      cloudinaryImageId:
+        "https://images.unsplash.com/photo-1586357507341-3fbe59f2a5d9?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+      description:
+        "Modern take on traditional Nepali dishes. Great for lunch and dinner.",
+      sla: {
+        deliveryTime: 35,
+        lastMileTravel: 4.2,
+        lastMileTravelString: "4.2 km",
+        serviceability: "SERVICEABLE",
+        slaString: "30-35 mins",
+      },
+      avgRating: 4.5,
+      cuisines: ["Nepali", "Asian", "Fusion"],
+      items: [
+        {
+          id: 201,
+          name: "Buff Momo",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Steamed dumplings filled with spiced buffalo meat, served with spicy sauce.",
+          price: 9.99,
+          category: "Appetizers",
+        },
+        {
+          id: 202,
+          name: "Chicken Choila",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Grilled chicken marinated with Newari spices and mustard oil.",
+          price: 11.99,
+          category: "Appetizers",
+        },
+        {
+          id: 203,
+          name: "Thukpa",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Hearty noodle soup with vegetables and your choice of protein.",
+          price: 10.99,
+          category: "Soups",
+        },
+        {
+          id: 204,
+          name: "Chicken Biryani",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Fragrant rice dish cooked with chicken, spices, and herbs.",
+          price: 13.99,
+          category: "Main Course",
+        },
+        {
+          id: 205,
+          name: "Kheer",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Traditional rice pudding flavored with cardamom and topped with nuts.",
+          price: 5.99,
+          category: "Desserts",
+        },
+      ],
     },
   },
   {
-    id: 3,
-    name: "Everest Dining",
-    cloudinaryImageId:
-      "https://images.unsplash.com/photo-1704642220407-392955316c7a?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfDB8fHww",
-    description:
-      "Family-owned restaurant serving home-style Nepali food with a view.",
-    avgRating: 4.3,
-    cuisines: ["Nepali", "Indian"],
-    sla: {
-      deliveryTime: 40,
-      lastMileTravel: 3.5,
-      serviceability: "SERVICEABLE",
-      distance: "3.5 km",
-      slaString: "35-40 mins",
+    info: {
+      id: 3,
+      name: "Everest Dining",
+      cloudinaryImageId:
+        "https://images.unsplash.com/photo-1651283439532-4eb3059007ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8OXx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+      description:
+        "Family-owned restaurant serving home-style Nepali food with a view.",
+      sla: {
+        deliveryTime: 35,
+        lastMileTravel: 4.2,
+        lastMileTravelString: "4.2 km",
+        serviceability: "SERVICEABLE",
+        slaString: "30-35 mins",
+      },
+      avgRating: 4.3,
+      cuisines: ["Nepali", "Asian"],
+      items: [
+        {
+          id: 301,
+          name: "Vegetable Pakora",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Crispy fritters made with mixed vegetables and chickpea flour.",
+          price: 7.99,
+          category: "Appetizers",
+        },
+        {
+          id: 302,
+          name: "Gundruk Soup",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Traditional fermented leafy green soup with a tangy flavor.",
+          price: 8.99,
+          category: "Soups",
+        },
+        {
+          id: 303,
+          name: "Chicken Curry",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Tender chicken cooked in a rich and aromatic curry sauce.",
+          price: 12.99,
+          category: "Main Course",
+        },
+        {
+          id: 304,
+          name: "Dhido Set",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Traditional buckwheat or millet porridge served with curry and pickles.",
+          price: 11.99,
+          category: "Main Course",
+        },
+        {
+          id: 305,
+          name: "Yomari",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Sweet dumplings made from rice flour and filled with molasses and sesame seeds.",
+          price: 6.99,
+          category: "Desserts",
+        },
+      ],
     },
   },
   {
-    id: 4,
-    name: "Namaste Nepal",
-    cloudinaryImageId:
-      "https://images.unsplash.com/photo-1736680056361-6a2f6e35fa50?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfDB8fHww",
-    description:
-      "Fusion of Nepali and Indian cuisine. Famous for their butter chicken and naan.",
-    avgRating: 4.6,
-    cuisines: ["Nepali", "Indian", "Fusion"],
-    sla: {
-      deliveryTime: 35,
-      lastMileTravel: 4.2,
-      lastMileTravelString: "4.2 km",
-      serviceability: "SERVICEABLE",
-      slaString: "30-35 mins",
+    info: {
+      id: 4,
+      name: "Namaste Nepal",
+      cloudinaryImageId:
+        "https://images.unsplash.com/photo-1704642220407-392955316c7a?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTR8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfHx8MTc0Njg4MzMyN3ww&ixlib=rb-4.1.0&q=85",
+      description:
+        "Fusion of Nepali and Indian cuisine. Famous for their butter chicken and naan.",
+      sla: {
+        deliveryTime: 35,
+        lastMileTravel: 4.2,
+        lastMileTravelString: "4.2 km",
+        serviceability: "SERVICEABLE",
+        slaString: "30-35 mins",
+      },
+      avgRating: 4.6,
+      cuisines: ["Nepali", "Indian"],
+      items: [
+        {
+          id: 401,
+          name: "Samosa",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description: "Crispy pastry filled with spiced potatoes and peas.",
+          price: 6.99,
+          category: "Appetizers",
+        },
+        {
+          id: 402,
+          name: "Butter Chicken",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description: "Tender chicken in a rich, creamy tomato sauce.",
+          price: 14.99,
+          category: "Main Course",
+        },
+        {
+          id: 403,
+          name: "Garlic Naan",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description: "Soft flatbread topped with garlic and butter.",
+          price: 3.99,
+          category: "Breads",
+        },
+        {
+          id: 404,
+          name: "Vegetable Biryani",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description:
+            "Fragrant rice cooked with mixed vegetables and aromatic spices.",
+          price: 11.99,
+          category: "Main Course",
+        },
+        {
+          id: 405,
+          name: "Gulab Jamun",
+          cloudinaryImageId:
+            "https://images.unsplash.com/photo-1728910107534-e04e261768ae?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8NHx8bmVwYWxpJTIwaW5kaWFuJTIwcmVzdGF1cmFudHxlbnwwfDJ8fHwxNzQ2ODgzMzI3fDA&ixlib=rb-4.1.0&q=85",
+          description: "Sweet milk solids balls soaked in sugar syrup.",
+          price: 5.99,
+          category: "Desserts",
+        },
+      ],
     },
   },
 ];
@@ -75,9 +285,17 @@ export const mockRecipes = [
   {
     id: 1,
     title: "Authentic Chicken Momo",
-    cloudinaryImageId: "/placeholder.svg?height=300&width=400",
+    cloudinaryImageId:
+      "https://images.unsplash.com/photo-1585734916364-621c3331b672?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfHx8MTc0Njg4MzMyN3ww&ixlib=rb-4.1.0&q=85",
     description:
       "Delicious Nepali dumplings filled with spiced chicken and served with tomato chutney.",
+    sla: {
+      deliveryTime: 35,
+      lastMileTravel: 4.2,
+      lastMileTravelString: "4.2 km",
+      serviceability: "SERVICEABLE",
+      slaString: "30-35 mins",
+    },
     avgRating: 4.8,
     category: "Appetizers",
     ingredients: [
@@ -102,9 +320,17 @@ export const mockRecipes = [
   {
     id: 2,
     title: "Dal Bhat",
-    cloudinaryImageId: "/placeholder.svg?height=300&width=400",
+    cloudinaryImageId:
+      "https://images.unsplash.com/photo-1585734916364-621c3331b672?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfHx8MTc0Njg4MzMyN3ww&ixlib=rb-4.1.0&q=85",
     description:
       "The national dish of Nepal consisting of lentil soup, rice, and various side dishes.",
+    sla: {
+      deliveryTime: 35,
+      lastMileTravel: 4.2,
+      lastMileTravelString: "4.2 km",
+      serviceability: "SERVICEABLE",
+      slaString: "30-35 mins",
+    },
     avgRating: 4.6,
     category: "Main Course",
     ingredients: [
@@ -133,9 +359,17 @@ export const mockRecipes = [
   {
     id: 3,
     title: "Sel Roti",
-    cloudinaryImageId: "/placeholder.svg?height=300&width=400",
+    cloudinaryImageId:
+      "https://images.unsplash.com/photo-1585734916364-621c3331b672?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfHx8MTc0Njg4MzMyN3ww&ixlib=rb-4.1.0&q=85",
     description:
       "Traditional Nepali sweet ring-shaped rice bread, typically served during festivals.",
+    sla: {
+      deliveryTime: 35,
+      lastMileTravel: 4.2,
+      lastMileTravelString: "4.2 km",
+      serviceability: "SERVICEABLE",
+      slaString: "30-35 mins",
+    },
     avgRating: 4.5,
     category: "Desserts",
     ingredients: [
@@ -159,9 +393,17 @@ export const mockRecipes = [
   {
     id: 4,
     title: "Aloo Tama",
-    cloudinaryImageId: "/placeholder.svg?height=300&width=400",
+    cloudinaryImageId:
+      "https://images.unsplash.com/photo-1585734916364-621c3331b672?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfHx8MTc0Njg4MzMyN3ww&ixlib=rb-4.1.0&q=85",
     description:
       "A tangy and spicy curry made with potatoes, bamboo shoots, and black-eyed peas.",
+    sla: {
+      deliveryTime: 35,
+      lastMileTravel: 4.2,
+      lastMileTravelString: "4.2 km",
+      serviceability: "SERVICEABLE",
+      slaString: "30-35 mins",
+    },
     avgRating: 4.4,
     category: "Main Course",
     ingredients: [
@@ -193,9 +435,17 @@ export const mockRecipes = [
   {
     id: 5,
     title: "Gundruk Soup",
-    cloudinaryImageId: "/placeholder.svg?height=300&width=400",
+    cloudinaryImageId:
+      "https://images.unsplash.com/photo-1585734916364-621c3331b672?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfHx8MTc0Njg4MzMyN3ww&ixlib=rb-4.1.0&q=85",
     description:
       "A traditional fermented leafy green soup that is tangy and full of probiotics.",
+    sla: {
+      deliveryTime: 35,
+      lastMileTravel: 4.2,
+      lastMileTravelString: "4.2 km",
+      serviceability: "SERVICEABLE",
+      slaString: "30-35 mins",
+    },
     avgRating: 4.2,
     category: "Soups",
     ingredients: [
@@ -224,9 +474,17 @@ export const mockRecipes = [
   {
     id: 6,
     title: "Yomari",
-    cloudinaryImageId: "/placeholder.svg?height=300&width=400",
+    cloudinaryImageId:
+      "https://images.unsplash.com/photo-1585734916364-621c3331b672?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfHx8MTc0Njg4MzMyN3ww&ixlib=rb-4.1.0&q=85",
     description:
       "A sweet dumpling made from rice flour and filled with molasses and sesame seeds.",
+    sla: {
+      deliveryTime: 35,
+      lastMileTravel: 4.2,
+      lastMileTravelString: "4.2 km",
+      serviceability: "SERVICEABLE",
+      slaString: "30-35 mins",
+    },
     avgRating: 4.7,
     category: "Desserts",
     ingredients: [
@@ -251,9 +509,17 @@ export const mockRecipes = [
   {
     id: 7,
     title: "Thukpa",
-    cloudinaryImageId: "/placeholder.svg?height=300&width=400",
+    cloudinaryImageId:
+      "https://images.unsplash.com/photo-1585734916364-621c3331b672?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfHx8MTc0Njg4MzMyN3ww&ixlib=rb-4.1.0&q=85",
     description:
       "A hearty noodle soup with vegetables and meat, popular in the Himalayan regions.",
+    sla: {
+      deliveryTime: 35,
+      lastMileTravel: 4.2,
+      lastMileTravelString: "4.2 km",
+      serviceability: "SERVICEABLE",
+      slaString: "30-35 mins",
+    },
     avgRating: 4.5,
     category: "Soups",
     ingredients: [
@@ -284,9 +550,17 @@ export const mockRecipes = [
   {
     id: 8,
     title: "Chatamari",
-    cloudinaryImageId: "/placeholder.svg?height=300&width=400",
+    cloudinaryImageId:
+      "https://images.unsplash.com/photo-1585734916364-621c3331b672?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfHx8MTc0Njg4MzMyN3ww&ixlib=rb-4.1.0&q=85",
     description:
       "A Newari rice flour crepe topped with various savory ingredients.",
+    sla: {
+      deliveryTime: 35,
+      lastMileTravel: 4.2,
+      lastMileTravelString: "4.2 km",
+      serviceability: "SERVICEABLE",
+      slaString: "30-35 mins",
+    },
     avgRating: 4.6,
     category: "Appetizers",
     ingredients: [
@@ -314,9 +588,17 @@ export const mockRecipes = [
   {
     id: 9,
     title: "Dhido",
-    cloudinaryImageId: "/placeholder.svg?height=300&width=400",
+    cloudinaryImageId:
+      "https://images.unsplash.com/photo-1585734916364-621c3331b672?crop=entropy&cs=srgb&fm=jpg&ixid=M3wxMjA3fDB8MXxzZWFyY2h8MTh8fG5lcGFsaSUyMGluZGlhbiUyMHJlc3RhdXJhbnR8ZW58MHwyfHx8MTc0Njg4MzMyN3ww&ixlib=rb-4.1.0&q=85",
     description:
       "A traditional Nepali dish made from buckwheat or millet flour, similar to polenta.",
+    sla: {
+      deliveryTime: 35,
+      lastMileTravel: 4.2,
+      lastMileTravelString: "4.2 km",
+      serviceability: "SERVICEABLE",
+      slaString: "30-35 mins",
+    },
     avgRating: 4.3,
     category: "Main Course",
     ingredients: [

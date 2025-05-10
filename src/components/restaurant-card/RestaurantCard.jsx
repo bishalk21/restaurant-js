@@ -1,14 +1,23 @@
 import { Link } from "react-router-dom";
 import { Star, Timer } from "lucide-react";
 import "./restaurant-card.css";
+import { RESTAURANT_IMAGE_URI } from "../../utils/constants";
 
 const RestaurantCard = ({ restaurant }) => {
-  const { id, name, cloudinaryImageId, cuisines, avgRating, sla } = restaurant;
+  const { id, name, cloudinaryImageId, cuisines, avgRating, sla } =
+    restaurant.info;
 
   return (
     <div className="restaurant-card">
       <div className="restaurant-image">
-        <img src={cloudinaryImageId} alt={name} />
+        <img
+          src={
+            cloudinaryImageId && cloudinaryImageId?.includes("unsplash")
+              ? `${cloudinaryImageId}`
+              : `${RESTAURANT_IMAGE_URI}${cloudinaryImageId}`
+          }
+          alt={name}
+        />
       </div>
       <div className="restaurant-content">
         <h3 className="restaurant-name">{name}</h3>
