@@ -24,8 +24,7 @@ const Header = () => {
         </Link>
 
         <div className="mobile-search">
-          {" "}
-          <SearchBar />{" "}
+          <SearchBar />
         </div>
 
         <nav className={`nav ${isMenuOpen ? "nav-open" : ""}`}>
@@ -49,8 +48,7 @@ const Header = () => {
         </nav>
 
         <div className="desktop-search">
-          {" "}
-          <SearchBar />{" "}
+          <SearchBar />
         </div>
 
         <Link to="/cart" className="cart-icon">

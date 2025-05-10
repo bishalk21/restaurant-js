@@ -1,0 +1,38 @@
+import { Link } from "react-router-dom";
+import { Star, Timer } from "lucide-react";
+import "./restaurant-card.css";
+
+const RestaurantCard = ({ restaurant }) => {
+  const { id, name, cloudinaryImageId, cuisines, avgRating, sla } = restaurant;
+
+  return (
+    <div className="restaurant-card">
+      <div className="restaurant-image">
+        <img src={cloudinaryImageId} alt={name} />
+      </div>
+      <div className="restaurant-content">
+        <h3 className="restaurant-name">{name}</h3>
+        <div className="rating-delivery-time">
+          <div className="restaurant-rating">
+            <Star
+              size={16}
+              className={avgRating >= 4 ? "star-filled" : "star-outline"}
+            />
+            <span>{avgRating?.toFixed(1)}</span>
+          </div>
+
+          <div className="delivery-time">
+            <Timer size={16} className="timer-icon" />{" "}
+            <span>{sla?.lastMileTravel ? `${sla?.slaString}` : "N/A"}</span>
+          </div>
+        </div>
+        <p className="restaurant-description">{cuisines?.join(", ")}</p>
+        <Link to={`/restaurant/${id}`} className="view-menu-btn">
+          View Menu
+        </Link>
+      </div>
+    </div>
+  );
+};
+
+export default RestaurantCard;

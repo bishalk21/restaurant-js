@@ -1,0 +1,82 @@
+.home-page {
+  padding-bottom: 40px;
+}
+
+.hero-section {
+  background-color: #1d3557;
+  color: white;
+  padding: 60px 0;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.hero-section h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.hero-section p {
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+  color: #ddd;
+}
+
+.featured-restaurants,
+.popular-recipes {
+  margin-bottom: 50px;
+}
+
+.restaurants-grid,
+.recipes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 30px;
+}
+
+.load-more-container {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.load-more-btn {
+  background-color: transparent;
+  border: 2px solid #e63946;
+  color: #e63946;
+  padding: 10px 25px;
+  border-radius: 4px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.load-more-btn:hover {
+  background-color: #e63946;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .hero-section {
+    padding: 40px 0;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section p {
+    font-size: 1rem;
+  }
+
+  .restaurants-grid,
+  .recipes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .restaurants-grid,
+  .recipes-grid {
+    grid-template-columns: 1fr;
+  }
+}

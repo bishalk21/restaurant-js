@@ -1,7 +1,8 @@
 import { useState } from "react";
 import CartContext from "../context/CartContext";
 import Header from "./header/Header";
-import { BrowserRouter, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import HomePage from "../pages/home/HomePage";
 
 const AppLayout = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -19,7 +20,9 @@ const AppLayout = () => {
       <div className="app">
         <BrowserRouter>
           <Header />
-          <Routes></Routes>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+          </Routes>
         </BrowserRouter>
       </div>
     </CartContext.Provider>

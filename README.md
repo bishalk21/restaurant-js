@@ -11,6 +11,9 @@ Hamro Bhojan is built using React.js, but without CRA (Create React App or any o
 - JavaScript
 - Parcel
 - React.js
+- React Router
+- lucide icons from lucide react
+- swiggy api (for restaurant data)
 
 ## Features
 
@@ -65,5 +68,6 @@ Hamro Bhojan is built using React.js, but without CRA (Create React App or any o
     - Other Links
 ```
 
-Hamro Bhojan is a web application that provides a platform for users to share and discover recipes. The application allows users to create an account, submit their own recipes, and browse through a collection of recipes submitted by other users. The goal of Hamro Bhojan is to promote the sharing of culinary knowledge and foster a community of food enthusiasts.
-The application is built using React (from scratch), a popular JavaScript library for building user interfaces. It utilizes modern web development practices and tools to create a responsive and user-friendly experience. The project is designed to be easily extendable, allowing for future enhancements and features to be added as needed.
+```bash
+not using keys (not acceptable) <<< index as key={index} <<< unique id as key={uniqueId} (best practice)
+```
