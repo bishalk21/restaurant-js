@@ -1,16 +1,36 @@
-import { useContext, useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
-import SearchBar from "../search-bar/SearchBar";
-import { ShoppingCart, Menu, X } from "lucide-react";
+import { ShoppingCart, Menu, X, User, LogOut } from "lucide-react";
 import "./header.css";
 import CartContext from "../../context/CartContext";
+import AuthContext from "../../context/AuthContext";
+import SearchBar from "../search-bar/SearchBar";
+import LoginModal from "../login-modal/LoginModal";
 
 const Header = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { cartItems } = useContext(CartContext);
+  const { isLoggedIn, user, logout } = useContext(AuthContext);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const openLoginModal = () => {
+    setIsLoginModalOpen(true);
+  };
+
+  const closeLoginModal = () => {
+    setIsLoginModalOpen(false);
+  };
+
+  const handleLogout = () => {
+    logout();
+    // Close the mobile menu if it's open
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
   };
 
   return (
@@ -51,13 +71,34 @@ const Header = () => {
           <SearchBar />
         </div>
 
-        <Link to="/cart" className="cart-icon">
-          <ShoppingCart size={24} />
-          {cartItems.length > 0 && (
-            <span className="cart-count">{cartItems.length}</span>
+        <div className="header-actions">
+          {isLoggedIn ? (
+            <div className="user-menu">
+              <div className="user-info">
+                <User size={20} />
+                <span className="user-name">{user.name}</span>
+              </div>
+              <button className="logout-button" onClick={handleLogout}>
+                <LogOut size={20} />
+                <span className="logout-text">Logout</span>
+              </button>
+            </div>
+          ) : (
+            <button className="login-button" onClick={openLoginModal}>
+              Login
+            </button>
           )}
-        </Link>
+
+          <Link to="/cart" className="cart-icon">
+            <ShoppingCart size={24} />
+            {cartItems.length > 0 && (
+              <span className="cart-count">{cartItems.length}</span>
+            )}
+          </Link>
+        </div>
       </div>
+
+      <LoginModal isOpen={isLoginModalOpen} onClose={closeLoginModal} />
     </header>
   );
 };

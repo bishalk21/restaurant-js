@@ -40,6 +40,60 @@
   color: #e63946;
 }
 
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.login-button {
+  background-color: transparent;
+  border: 2px solid #e63946;
+  color: #e63946;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: #e63946;
+  color: white;
+}
+
+.user-menu {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #333;
+}
+
+.user-name {
+  font-weight: 500;
+}
+
+.logout-button {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.logout-button:hover {
+  color: #e63946;
+}
+
 .cart-icon {
   position: relative;
   color: #333;
@@ -72,6 +126,17 @@
 }
 
 /* Responsive styles */
+@media (max-width: 992px) {
+  .header-actions {
+    gap: 10px;
+  }
+
+  .user-name,
+  .logout-text {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .header-container {
     flex-wrap: wrap;
@@ -122,5 +187,16 @@
     width: 100%;
     order: 3;
     margin-top: 15px;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-button {
+    padding: 6px 12px;
+    font-size: 0.9rem;
   }
 }

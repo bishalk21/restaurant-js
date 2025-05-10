@@ -6,6 +6,7 @@ import HomePage from "../pages/home/HomePage";
 import Footer from "./footer/Footer";
 import AboutPage from "../pages/about/AboutPage";
 import ContactPage from "../pages/contact/ContactPage";
+import { AuthProvider } from "../context/AuthContext";
 
 const AppLayout = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -19,19 +20,21 @@ const AppLayout = () => {
   };
 
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
-      <div className="app">
-        <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
-      </div>
-    </CartContext.Provider>
+    <AuthProvider>
+      <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+        <div className="app">
+          <BrowserRouter>
+            <Header />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+            </Routes>
+            <Footer />
+          </BrowserRouter>
+        </div>
+      </CartContext.Provider>
+    </AuthProvider>
   );
 };
 
