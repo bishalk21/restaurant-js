@@ -3,6 +3,7 @@ import CartContext from "../context/CartContext";
 import Header from "./header/Header";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "../pages/home/HomePage";
+import Footer from "./footer/Footer";
 
 const AppLayout = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -23,6 +24,7 @@ const AppLayout = () => {
           <Routes>
             <Route path="/" element={<HomePage />} />
           </Routes>
+          <Footer />
         </BrowserRouter>
       </div>
     </CartContext.Provider>
