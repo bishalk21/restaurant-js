@@ -1,22 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import { Search } from "lucide-react";
 import "./searchbar.css";
+import { RESTAURANT_IMAGE_URI } from "../../utils/constants";
 
-const SearchBar = () => {
+const SearchBar = ({ restaurants }) => {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef(null);
-
-  // Mock data for suggestions
-  const mockSuggestions = [
-    { id: 1, type: "restaurant", name: "Nepali Kitchen" },
-    { id: 2, type: "restaurant", name: "Himalayan Flavors" },
-    { id: 3, type: "food", name: "Momo" },
-    { id: 4, type: "food", name: "Dal Bhat" },
-    { id: 5, type: "recipe", name: "Chicken Curry" },
-    { id: 6, type: "recipe", name: "Sel Roti" },
-  ];
+  // const { cloudinaryImageId } = restaurants?.info;
 
   useEffect(() => {
     // Filter suggestions based on query
@@ -25,8 +17,8 @@ const SearchBar = () => {
       return;
     }
 
-    const filtered = mockSuggestions.filter((item) =>
-      item.name.toLowerCase().includes(query.toLowerCase())
+    const filtered = restaurants.filter((item) =>
+      item?.info?.name.toLowerCase().includes(query.toLowerCase())
     );
     setSuggestions(filtered);
   }, [query]);
@@ -51,7 +43,7 @@ const SearchBar = () => {
   };
 
   const handleSuggestionClick = (suggestion) => {
-    setQuery(suggestion.name);
+    setQuery(suggestion?.info?.name);
     setShowSuggestions(false);
     // Here you would typically navigate to the item page
   };
@@ -67,7 +59,10 @@ const SearchBar = () => {
           onFocus={() => setShowSuggestions(true)}
           className="search-input"
         />
-        <button className="search-button">
+        <button
+          className="search-button"
+          onClick={() => setShowSuggestions(true)}
+        >
           <Search size={20} />
         </button>
       </div>
@@ -76,12 +71,20 @@ const SearchBar = () => {
         <ul className="suggestions-list">
           {suggestions.map((suggestion) => (
             <li
-              key={suggestion.id}
+              key={suggestion.info.id}
               className="suggestion-item"
               onClick={() => handleSuggestionClick(suggestion)}
             >
-              <span className="suggestion-type">{suggestion.type}</span>
-              <span className="suggestion-name">{suggestion.name}</span>
+              <img
+                src={
+                  suggestion?.info?.cloudinaryImageId
+                    ? `${RESTAURANT_IMAGE_URI}${suggestion?.info?.cloudinaryImageId}`
+                    : suggestion?.info?.cloudinaryImageId
+                }
+                alt={suggestion?.info?.name}
+                className="suggestion-image"
+              />
+              <span className="suggestion-name">{suggestion.info.name}</span>
             </li>
           ))}
         </ul>
