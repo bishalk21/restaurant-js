@@ -14,6 +14,7 @@ Hamro Bhojan is built using React.js, but without CRA (Create React App or any o
 - React Router
 - lucide icons from lucide react
 - swiggy api (for restaurant data)
+- axios (for making API calls)
 
 ## Features
 
@@ -72,4 +73,9 @@ Hamro Bhojan is built using React.js, but without CRA (Create React App or any o
 not using keys (not acceptable) <<< index as key={index} <<< unique id as key={uniqueId} (best practice)
 
 never keep hardcoded data in the component files, always keep it in a separate file and import it into the component file. (best practice)
+
+- when app loads --- (fetch data) ----> api call (takes 5000ms) --- (wait for data to come) --> render data
+- when app loads ----> render ui (skeleton) ----> make api call ---> rerender ui with data (better approach, better ux)
+  - rendering twice: react renders cycle are very fast (better user experience) ----> better approach
+  - use useEffect hook for this approach
 ```
