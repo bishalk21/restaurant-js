@@ -28,36 +28,38 @@ Hamro Bhojan is built using React.js, but without CRA (Create React App or any o
 - Header
   - Logo
   - Navigation Links
+    - Home
+    - About Us
+    - Contact Us
   - Cart Icon
 - Search Bar
     - Input Field
     - Autocomplete Suggestions
 - Home Page
-    - Restaurant Card
+    - Restaurant Cards
         - Restaurant Name
         - Image
         - Description
         - Rating
         - View Menu Button
-    - Recipe List
-        - Recipe Card
-        - Image
-        - Title
-        - Description
-        - Rating
-        - View Recipe Button
-        - Like Button
-        - Comment Section
-        - Load More Button
-    - Recipe Details Page
-        - Recipe Title
-        - Image
-        - Description
-        - Ingredients List
-        - Instructions List
-        - Like Button
-        - Comment Section
-        - Related Recipes
+            - Recipe List
+                - Recipe Card
+                - Image
+                - Title
+                - Description
+                - Rating
+                - View Recipe Button
+                - Add to Cart Button
+                - Load More Button
+                    - Recipe Details Page
+                        - Recipe Title
+                        - Image
+                        - Description
+                        - Ingredients List
+                        - Instructions List
+                        - Like Button
+                        - Comment Section
+                        - Related Recipes
 - Footer
     - Social Media Links
     - Other Links

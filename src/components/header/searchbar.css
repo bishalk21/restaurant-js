@@ -1,0 +1,82 @@
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.search-input-container {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-input {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+}
+
+.search-button {
+  background-color: #e63946;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.suggestions-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  max-height: 300px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.suggestion-item {
+  padding: 10px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+}
+
+.suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.suggestion-item:hover {
+  background-color: #f5f5f5;
+}
+
+.suggestion-type {
+  font-size: 0.8rem;
+  color: #666;
+  background-color: #f0f0f0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  text-transform: capitalize;
+}
+
+.suggestion-name {
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .search-bar {
+    max-width: 100%;
+  }
+}
