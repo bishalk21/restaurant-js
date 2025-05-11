@@ -73,6 +73,7 @@
 
 .suggestion-name {
   font-weight: 500;
+  text-align: end;
 }
 
 .suggestion-image {

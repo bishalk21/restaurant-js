@@ -7,7 +7,7 @@ import AuthContext from "../../context/AuthContext";
 import SearchBar from "../search-bar/SearchBar";
 import LoginModal from "../login-modal/LoginModal";
 
-const Header = ({ restaurants }) => {
+const Header = () => {
   const { cartItems } = useContext(CartContext);
   const { isLoggedIn, user, logout } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,7 +44,7 @@ const Header = ({ restaurants }) => {
         </Link>
 
         <div className="mobile-search">
-          <SearchBar restaurants={restaurants} />
+          <SearchBar />
         </div>
 
         <nav className={`nav ${isMenuOpen ? "nav-open" : ""}`}>
@@ -68,7 +68,7 @@ const Header = ({ restaurants }) => {
         </nav>
 
         <div className="desktop-search">
-          <SearchBar restaurants={restaurants} />
+          <SearchBar />
         </div>
 
         <div className="header-actions">

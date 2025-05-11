@@ -2,12 +2,14 @@ import { useState, useEffect, useRef } from "react";
 import { Search } from "lucide-react";
 import "./searchbar.css";
 import { RESTAURANT_IMAGE_URI } from "../../utils/constants";
+import { useRestaurants } from "../../context/RestaurantContext";
 
-const SearchBar = ({ restaurants }) => {
+const SearchBar = () => {
   const [query, setQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef(null);
+  const { restaurants } = useRestaurants();
 
   useEffect(() => {
     // Filter suggestions based on query
@@ -16,7 +18,7 @@ const SearchBar = ({ restaurants }) => {
       return;
     }
 
-    const filtered = restaurants.filter((item) =>
+    const filtered = restaurants?.filter((item) =>
       item?.info?.name.toLowerCase().includes(query.toLowerCase())
     );
     setSuggestions(filtered);

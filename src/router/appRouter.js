@@ -26,14 +26,12 @@ const MainLayout = () => {
     setCartItems((prevItems) => prevItems.filter((i) => i.id !== item.id));
   };
 
-  const { restaurants, setRestaurants } = useRestaurants();
-
   return (
     <AuthProvider>
       <RestaurantProvider>
         <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
           <div className="app">
-            <Header restaurants={restaurants} />
+            <Header />
             <Outlet />
             <Footer />
           </div>
@@ -52,17 +50,14 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <HomePageContext />,
-        errorElement: <NotFoundPage />,
       },
       {
         path: "/about",
         element: <AboutPage />,
-        errorElement: <NotFoundPage />,
       },
       {
         path: "/contact",
         element: <ContactPage />,
-        errorElement: <NotFoundPage />,
       },
     ],
   },
