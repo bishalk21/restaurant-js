@@ -1,0 +1,76 @@
+import { createContext, useState, useEffect, useContext } from "react";
+import axios from "axios";
+import { RESTAURANT_API_URI } from "../utils/constants";
+import { mockRestaurants } from "../utils/mockData";
+
+// Create the context with default values
+const RestaurantContext = createContext({
+  restaurants: [],
+  isLoading: true,
+  error: null,
+  refetchRestaurants: () => {},
+});
+
+// Custom hook to use the restaurant context
+export const useRestaurants = () => {
+  const context = useContext(RestaurantContext);
+  if (!context) {
+    throw new Error("useRestaurants must be used within a RestaurantProvider");
+  }
+  return context;
+};
+
+export const RestaurantProvider = ({ children }) => {
+  const [restaurants, setRestaurants] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const fetchRestaurants = async () => {
+    setIsLoading(true);
+    setError(null);
+
+    try {
+      const response = await axios.get(RESTAURANT_API_URI);
+      const data =
+        response?.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
+          ?.restaurants;
+
+      if (data) {
+        setRestaurants(data);
+      } else {
+        console.log(
+          "No restaurant data found in the response. Using mock data."
+        );
+        setRestaurants(mockRestaurants);
+      }
+    } catch (error) {
+      console.error("Error fetching restaurant data:", error);
+      setError("Failed to fetch restaurants. Please try again later.");
+      setRestaurants(mockRestaurants);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Fetch restaurants when the provider mounts
+  useEffect(() => {
+    fetchRestaurants();
+  }, []);
+
+  // Create the context value object
+  const contextValue = {
+    restaurants,
+    isLoading,
+    error,
+    refetchRestaurants: fetchRestaurants,
+    setRestaurants,
+  };
+
+  return (
+    <RestaurantContext.Provider value={contextValue}>
+      {children}
+    </RestaurantContext.Provider>
+  );
+};
+
+export default RestaurantContext;

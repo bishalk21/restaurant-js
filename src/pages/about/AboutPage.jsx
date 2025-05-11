@@ -1,11 +1,41 @@
+import { useEffect, useState } from "react";
 import "./about.css";
 
 const AboutPage = () => {
+  const [btnValue, setBtnValue] = useState("Click Me");
+  console.log("AboutPage component rendered");
+
+  // useEffect()
+  // when is the useEffect() hook called?
+  // useEffect() is called after the component is mounted and rendered to the DOM,
+  // It is also called after every re-render of the component, unless you provide a dependency array.
+
+  useEffect(() => {
+    console.log("after component mounted");
+    // 1.  if no array is passed, it will run after every render
+    // });
+
+    // 2.  if empty array is passed, it will run only once after the component is mounted
+  }, []);
+
+  // 3.  if array is passed, it will run after every render if any of the values in the array change
+  // }, [btnValue]);
+
   return (
     <div className="about-page">
       <div className="container">
         <h1 className="page-title">About Hamro Bhojan</h1>
 
+        <button
+          className="btn btn-primary"
+          onClick={() => {
+            btnValue === "Click Me"
+              ? setBtnValue("Clicked!")
+              : setBtnValue("Click Me");
+          }}
+        >
+          {btnValue}
+        </button>
         <section className="about-section">
           <h2>Our Story</h2>
           <p>

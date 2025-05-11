@@ -8,7 +8,6 @@ const SearchBar = ({ restaurants }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
   const searchRef = useRef(null);
-  // const { cloudinaryImageId } = restaurants?.info;
 
   useEffect(() => {
     // Filter suggestions based on query
@@ -38,14 +37,16 @@ const SearchBar = ({ restaurants }) => {
   }, []);
 
   const handleInputChange = (e) => {
-    setQuery(e.target.value);
+    // setQuery(e.target.value);
+    const value = e.target.value;
+    setQuery(value);
     setShowSuggestions(true);
   };
 
   const handleSuggestionClick = (suggestion) => {
     setQuery(suggestion?.info?.name);
     setShowSuggestions(false);
-    // Here you would typically navigate to the item page
+    //  navigate to the item page
   };
 
   return (

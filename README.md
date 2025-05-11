@@ -78,4 +78,8 @@ never keep hardcoded data in the component files, always keep it in a separate f
 - when app loads ----> render ui (skeleton) ----> make api call ---> rerender ui with data (better approach, better ux)
   - rendering twice: react renders cycle are very fast (better user experience) ----> better approach
   - use useEffect hook for this approach
+
+  always call hooks inside the component and at the top level of the component (best practice)
+
+  never call hooks inside loops, conditions, or nested functions (best practice)
 ```
