@@ -93,4 +93,8 @@ never keep hardcoded data in the component files, always keep it in a separate f
   always call hooks inside the component and at the top level of the component (best practice)
 
   never call hooks inside loops, conditions, or nested functions (best practice)
+
+  single responsibility principle (best practice)
+  - each component should have a single responsibility (best practice)
+
 ```

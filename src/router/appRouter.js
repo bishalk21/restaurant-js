@@ -5,20 +5,18 @@ import NotFoundPage from "../pages/not-found/NotFoundPage";
 import Header from "../components/header/Header";
 import { AuthProvider } from "../context/AuthContext";
 import CartContext from "../context/CartContext";
-import { mockRestaurants } from "../utils/mockData";
-import { RESTAURANT_API_URI } from "../utils/constants";
-import {
-  RestaurantProvider,
-  useRestaurants,
-} from "../context/RestaurantContext";
+import { RestaurantProvider } from "../context/RestaurantContext";
 import HomePageContext from "../pages/home/HomePageContext";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Footer from "../components/footer/Footer";
-import RestaurantMenuPage from "../pages/restaurant-menu/RestaurantMenuPage";
 import RestaurantMenus from "../pages/restaurant-menu/RestaurantMenus";
+import { useOnlineStatus } from "../context/OnlineStatus";
+import OfflinePage from "../pages/not-found/OfflinePage";
 
 const MainLayout = () => {
   const [cartItems, setCartItems] = useState([]);
+  const isOnline = useOnlineStatus();
+  const [retryCount, setRetryCount] = useState(0);
 
   const addToCart = (item) => {
     setCartItems((prevItems) => [...prevItems, item]);
@@ -27,6 +25,15 @@ const MainLayout = () => {
   const removeFromCart = (item) => {
     setCartItems((prevItems) => prevItems.filter((i) => i.id !== item.id));
   };
+
+  const handleRetry = () => {
+    // Force a re-render to check online status again
+    setRetryCount((prev) => prev + 1);
+  };
+
+  if (!isOnline) {
+    return <OfflinePage onRetry={handleRetry} />;
+  }
 
   return (
     <AuthProvider>
