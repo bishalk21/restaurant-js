@@ -1,18 +1,22 @@
+import { lazy, Suspense, useState } from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
-import AboutPage from "../pages/about/AboutPage";
-import ContactPage from "../pages/contact/ContactPage";
+import { AuthProvider } from "../context/AuthContext";
+import { RestaurantProvider } from "../context/RestaurantContext";
+import { useOnlineStatus } from "../context/OnlineStatus";
 import NotFoundPage from "../pages/not-found/NotFoundPage";
 import Header from "../components/header/Header";
-import { AuthProvider } from "../context/AuthContext";
 import CartContext from "../context/CartContext";
-import { RestaurantProvider } from "../context/RestaurantContext";
-import HomePageContext from "../pages/home/HomePageContext";
-import { useState } from "react";
 import Footer from "../components/footer/Footer";
-import RestaurantMenus from "../pages/restaurant-menu/RestaurantMenus";
-import { useOnlineStatus } from "../context/OnlineStatus";
 import OfflinePage from "../pages/not-found/OfflinePage";
-import CartPage from "../pages/cart/CartPage";
+import SuspenseFallback from "../components/suspense-fallback/SuspenseFallback";
+
+const HomePage = lazy(() => import("../pages/home/HomePageContext"));
+const CartPage = lazy(() => import("../pages/cart/CartPage"));
+const RestaurantMenus = lazy(() =>
+  import("../pages/restaurant-menu/RestaurantMenus")
+);
+const AboutPage = lazy(() => import("../pages/about/AboutPage"));
+const ContactPage = lazy(() => import("../pages/contact/ContactPage"));
 
 const MainLayout = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -59,27 +63,51 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePageContext />,
+        element: (
+          <Suspense fallback={<SuspenseFallback type="home-page" />}>
+            <HomePage />
+          </Suspense>
+        ),
       },
       {
         path: "/home",
-        element: <HomePageContext />,
+        element: (
+          <Suspense fallback={<SuspenseFallback type="home-page" />}>
+            <HomePage />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurant/:restaurantId",
-        element: <RestaurantMenus />,
+        element: (
+          <Suspense fallback={<SuspenseFallback type="restaurant-recipe" />}>
+            <RestaurantMenus />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
-        element: <CartPage />,
+        element: (
+          <Suspense fallback={<SuspenseFallback type="cart" />}>
+            <CartPage />
+          </Suspense>
+        ),
       },
       {
         path: "/about",
-        element: <AboutPage />,
+        element: (
+          <Suspense fallback={<SuspenseFallback type="about" />}>
+            <AboutPage />
+          </Suspense>
+        ),
       },
       {
         path: "/contact",
-        element: <ContactPage />,
+        element: (
+          <Suspense fallback={<SuspenseFallback type="contact" />}>
+            <ContactPage />
+          </Suspense>
+        ),
       },
     ],
   },

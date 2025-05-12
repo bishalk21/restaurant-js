@@ -9,8 +9,6 @@ const CartPage = () => {
   const { cartItems, removeFromCart } = useContext(CartContext);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
 
-  console.log("Cart Items:", cartItems);
-
   // Calculate subtotal
   const subtotal = cartItems.reduce(
     (total, item) => total + item?.card?.info?.price,
