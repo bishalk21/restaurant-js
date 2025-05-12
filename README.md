@@ -97,4 +97,13 @@ never keep hardcoded data in the component files, always keep it in a separate f
   single responsibility principle (best practice)
   - each component should have a single responsibility (best practice)
 
+- best app performance
+  - chunking
+  - break app into smaller pieces (smaller logical chunks or bundles of one single file)
+  - code splitting
+  - dynamic bundling
+  - lazy loading
+  - demand loading
+  - dynamic import
+
 ```

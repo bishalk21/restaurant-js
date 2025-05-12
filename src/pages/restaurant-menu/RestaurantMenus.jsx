@@ -6,7 +6,7 @@ import {
   RESTAURANT_MENU_API_URI,
 } from "../../utils/constants";
 import "./restaurant-menu.css";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CartContext from "../../context/CartContext";
 
 const RestaurantMenus = () => {
@@ -52,7 +52,7 @@ const RestaurantMenus = () => {
 
   const { itemCards } =
     restaurantMenuCuisines?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR
-      ?.cards[1]?.card?.card;
+      ?.cards[2]?.card?.card;
 
   const handleAddToCart = (cuisine) => {
     addToCart({
@@ -162,13 +162,16 @@ const RestaurantMenus = () => {
               <h3>No items found in {activeCategory}</h3>
               <p>We couldn't find any menu items in this category.</p>
               <div className="no-cuisines-actions">
-                <button
+                <Link
+                  to="/home"
                   className="reset-filter-btn"
-                  onClick={() => setActiveCategory("All")}
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                  }}
                 >
                   <Filter size={16} />
-                  View All Categories
-                </button>
+                  View other restaurants
+                </Link>
               </div>
               <div className="no-cuisines-suggestion">
                 <p>

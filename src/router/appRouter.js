@@ -12,6 +12,7 @@ import Footer from "../components/footer/Footer";
 import RestaurantMenus from "../pages/restaurant-menu/RestaurantMenus";
 import { useOnlineStatus } from "../context/OnlineStatus";
 import OfflinePage from "../pages/not-found/OfflinePage";
+import CartPage from "../pages/cart/CartPage";
 
 const MainLayout = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -61,8 +62,16 @@ const appRouter = createBrowserRouter([
         element: <HomePageContext />,
       },
       {
+        path: "/home",
+        element: <HomePageContext />,
+      },
+      {
         path: "/restaurant/:restaurantId",
         element: <RestaurantMenus />,
+      },
+      {
+        path: "/cart",
+        element: <CartPage />,
       },
       {
         path: "/about",

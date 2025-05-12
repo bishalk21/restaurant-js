@@ -35,7 +35,8 @@
 .restaurant-name {
   font-size: 1rem;
   color: #333;
-  max-height: 50px;
+  height: fit-content;
+  max-height: 40px;
   overflow: hidden;
 }
 

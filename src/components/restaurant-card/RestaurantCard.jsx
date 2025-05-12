@@ -35,11 +35,7 @@ const RestaurantCard = ({ restaurant }) => {
           </div>
         </div>
         <p className="restaurant-description">{cuisines?.join(", ")}</p>
-        <Link
-          to={`/restaurant/${id}`}
-          className="view-menu-btn"
-          onClick={() => window.scrollTo(0, 0)}
-        >
+        <Link to={`/restaurant/${id}`} className="view-menu-btn">
           View Menu
         </Link>
       </div>
