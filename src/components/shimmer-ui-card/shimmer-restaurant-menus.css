@@ -1,0 +1,226 @@
+/* Shimmer for restaurant header */
+.shimmer-restaurant-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 30px;
+}
+
+.shimmer-restaurant-info {
+  flex: 1;
+}
+
+.shimmer-restaurant-name {
+  height: 40px;
+  width: 60%;
+  background: #f0f0f0;
+  margin-bottom: 15px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-restaurant-rating {
+  height: 20px;
+  width: 30%;
+  background: #f0f0f0;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-restaurant-description {
+  height: 16px;
+  width: 100%;
+  background: #f0f0f0;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-restaurant-description.short {
+  width: 80%;
+}
+
+.shimmer-restaurant-image-container {
+  flex: 1;
+  max-width: 500px;
+  height: 300px;
+  background: #f0f0f0;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer for menu section */
+.shimmer-menu-section {
+  margin-top: 20px;
+}
+
+.shimmer-menu-title {
+  height: 30px;
+  width: 200px;
+  background: #f0f0f0;
+  margin-bottom: 20px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.shimmer-category-button {
+  height: 36px;
+  width: 100px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-cuisines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+.shimmer-cuisine-card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+}
+
+.shimmer-cuisine-image {
+  height: 180px;
+  background: #f0f0f0;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-cuisine-content {
+  padding: 15px;
+}
+
+.shimmer-cuisine-name {
+  height: 24px;
+  width: 70%;
+  background: #f0f0f0;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-cuisine-description {
+  height: 16px;
+  width: 100%;
+  background: #f0f0f0;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-cuisine-description.short {
+  width: 80%;
+}
+
+.shimmer-cuisine-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.shimmer-cuisine-price {
+  height: 20px;
+  width: 60px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-cuisine-button {
+  height: 36px;
+  width: 120px;
+  background: #f0f0f0;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shimmer animation */
+.shimmer-restaurant-name::after,
+.shimmer-restaurant-rating::after,
+.shimmer-restaurant-description::after,
+.shimmer-restaurant-image-container::after,
+.shimmer-menu-title::after,
+.shimmer-category-button::after,
+.shimmer-cuisine-image::after,
+.shimmer-cuisine-name::after,
+.shimmer-cuisine-description::after,
+.shimmer-cuisine-price::after,
+.shimmer-cuisine-button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: shimmer 1.5s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .shimmer-restaurant-header {
+    flex-direction: column;
+  }
+
+  .shimmer-restaurant-image-container {
+    max-width: 100%;
+    order: -1;
+    height: 250px;
+  }
+
+  .shimmer-cuisines-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .shimmer-cuisines-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .shimmer-category-filter {
+    overflow-x: auto;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+  }
+}

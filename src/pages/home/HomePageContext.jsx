@@ -48,11 +48,11 @@ const HomePageContext = () => {
                     .map((_, index) => {
                       return <ShimmerRestaurantCard key={`shimmer-${index}`} />;
                     })
-                : restaurants.map((restaurant) => {
+                : restaurants?.map((restaurant) => {
                     return (
                       <RestaurantCard
+                        restaurant={restaurant?.info}
                         key={restaurant?.info?.id}
-                        restaurant={restaurant}
                       />
                     );
                   })

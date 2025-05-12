@@ -4,8 +4,7 @@ import "./restaurant-card.css";
 import { RESTAURANT_IMAGE_URI } from "../../utils/constants";
 
 const RestaurantCard = ({ restaurant }) => {
-  const { id, name, cloudinaryImageId, cuisines, avgRating, sla } =
-    restaurant.info;
+  const { id, name, cloudinaryImageId, cuisines, avgRating, sla } = restaurant;
 
   return (
     <div className="restaurant-card">
@@ -36,7 +35,11 @@ const RestaurantCard = ({ restaurant }) => {
           </div>
         </div>
         <p className="restaurant-description">{cuisines?.join(", ")}</p>
-        <Link to={`/restaurant/${id}`} className="view-menu-btn">
+        <Link
+          to={`/restaurant/${id}`}
+          className="view-menu-btn"
+          onClick={() => window.scrollTo(0, 0)}
+        >
           View Menu
         </Link>
       </div>

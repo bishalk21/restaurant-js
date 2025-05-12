@@ -55,6 +55,14 @@ export const RestaurantProvider = ({ children }) => {
   // Fetch restaurants when the provider mounts
   useEffect(() => {
     fetchRestaurants();
+    // Fetch restaurants when the component mounts
+    // fetchRestaurants();
+    // Cleanup function to reset state if needed
+    return () => {
+      setRestaurants([]);
+      setIsLoading(true);
+      setError(null);
+    };
   }, []);
 
   // Create the context value object

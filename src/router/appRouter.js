@@ -14,6 +14,8 @@ import {
 import HomePageContext from "../pages/home/HomePageContext";
 import { useEffect, useState } from "react";
 import Footer from "../components/footer/Footer";
+import RestaurantMenuPage from "../pages/restaurant-menu/RestaurantMenuPage";
+import RestaurantMenus from "../pages/restaurant-menu/RestaurantMenus";
 
 const MainLayout = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -50,6 +52,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <HomePageContext />,
+      },
+      {
+        path: "/restaurant/:restaurantId",
+        element: <RestaurantMenus />,
       },
       {
         path: "/about",

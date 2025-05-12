@@ -11,7 +11,18 @@ Hamro Bhojan is built using React.js, but without CRA (Create React App or any o
 - JavaScript
 - Parcel
 - React.js
-- React Router
+- React Hooks
+  - useState
+  - useEffect
+  - useRef
+  - useContext
+- React Router Dom
+  - BrowserRouter & createBrowserRouter
+  - Routes
+  - Route
+  - Link
+  - for routing (dynamic routing)
+  - for navigation
 - lucide icons from lucide react
 - swiggy api (for restaurant data)
 - axios (for making API calls)
