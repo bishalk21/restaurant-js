@@ -50,7 +50,7 @@ const Header = () => {
   };
 
   return (
-    <header className="header">
+    <header className="header bg-white sticky top-0 z-50 shadow-lg">
       <div className="container header-container">
         <button className="menu-toggle" onClick={toggleMenu}>
           {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
