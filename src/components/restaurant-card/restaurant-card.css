@@ -112,6 +112,31 @@
   background-color: #d62b39;
 }
 
+/* promoted label */
+
+.promoted-wrapper {
+  position: relative;
+  margin-top: 16px;
+}
+
+.promoted-label {
+  position: absolute;
+  top: -14px;
+  left: 8px;
+  background-color: #fff;
+  color: #e63946;
+  font-size: 1rem;
+  font-weight: 800;
+  padding: 6px 10px;
+  border-radius: 4px;
+  z-index: 1;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.promoted-label span {
+  display: block;
+}
+
 @media (max-width: 768px) {
   .restaurant-image {
     height: 180px;
@@ -123,5 +148,10 @@
 
   .restaurant-name {
     font-size: 1.1rem;
+  }
+
+  .promoted-label {
+    font-size: 0.7rem;
+    padding: 3px 6px;
   }
 }

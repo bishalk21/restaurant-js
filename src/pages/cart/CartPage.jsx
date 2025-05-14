@@ -6,14 +6,11 @@ import { RESTAURANT_IMAGE_URI } from "../../utils/constants.js";
 import "./cart.css";
 
 const CartPage = () => {
-  const { cartItems, removeFromCart } = useContext(CartContext);
+  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
 
   // Calculate subtotal
-  const subtotal = cartItems.reduce(
-    (total, item) => total + item?.card?.info?.price,
-    0
-  );
+  const subtotal = cartItems.reduce((total, item) => total + item?.price, 0);
 
   // Calculate delivery fee (free over $30)
   const deliveryFee = subtotal > 30 ? 0 : 4.99;
@@ -24,8 +21,11 @@ const CartPage = () => {
   // Calculate total
   const total = subtotal + deliveryFee + tax;
 
-  const handleRemoveItem = (item) => {
-    removeFromCart(item?.card?.info?.id);
+  const handleRemoveItem = (cartItemId) => {
+    removeFromCart(cartItemId);
+    // Optionally, you can show a confirmation message or toast
+    // after removing the item from the cart
+    alert("Item removed from cart");
   };
 
   const handleCheckout = () => {
@@ -36,6 +36,7 @@ const CartPage = () => {
       alert("Checkout successful! Your order has been placed.");
       // In a real app, you would redirect to a confirmation page
       setIsCheckingOut(false);
+      clearCart();
     }, 2000);
   };
 
@@ -57,7 +58,7 @@ const CartPage = () => {
           Your Cart
         </h1>
 
-        {cartItems?.length > 0 ? (
+        {cartItems.length > 0 ? (
           <div className="cart-content">
             <div className="cart-items">
               {Object.entries(itemsByRestaurant).map(
@@ -65,31 +66,27 @@ const CartPage = () => {
                   <div key={restaurantName} className="restaurant-group">
                     <h2 className="restaurant-name">{restaurantName}</h2>
 
-                    {items?.map((item) => (
-                      <div key={item?.card?.info?.id} className="cart-item">
+                    {items.map((item) => (
+                      <div key={item.cartItemId} className="cart-item">
                         <div className="item-image">
                           <img
                             src={
-                              `${RESTAURANT_IMAGE_URI}${item?.card?.info?.imageId}` ||
+                              `${RESTAURANT_IMAGE_URI}${item.imageId}` ||
                               "/placeholder.svg?height=80&width=80"
                             }
-                            alt={item?.card?.info?.name}
+                            alt={item.name}
                           />
                         </div>
                         <div className="item-details">
-                          <h3 className="item-name">
-                            {item?.card?.info?.name}
-                          </h3>
-                          <p className="item-description">
-                            {item?.card?.info?.description}
-                          </p>
+                          <h3 className="item-name">{item.name}</h3>
+                          <p className="item-description">{item.description}</p>
                         </div>
                         <div className="item-price">
-                          ${item?.card?.info?.price?.toFixed(2)}
+                          ${item.price.toFixed(2)}
                         </div>
                         <button
                           className="remove-item-btn"
-                          onClick={() => handleRemoveItem(item)}
+                          onClick={() => handleRemoveItem(item.cartItemId)}
                           aria-label="Remove item"
                         >
                           <Trash2 size={18} />

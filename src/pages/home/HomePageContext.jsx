@@ -1,10 +1,16 @@
 import "./home-page.css";
-import RestaurantCard from "../../components/restaurant-card/RestaurantCard";
+import RestaurantCard, {
+  withPromotedLabel,
+} from "../../components/restaurant-card/RestaurantCard";
 import ShimmerRestaurantCard from "../../components/shimmer-ui-card/ShimmerRestaurantCard";
 import { useRestaurants } from "../../context/RestaurantContext";
 
 const HomePageContext = () => {
   const { restaurants, setRestaurants } = useRestaurants();
+
+  // high order component to add promoted label
+  const PromotedRestaurantCard = withPromotedLabel(RestaurantCard);
+
   return (
     <div className="home-page">
       <section className="hero-section">
@@ -50,10 +56,15 @@ const HomePageContext = () => {
                     })
                 : restaurants?.map((restaurant) => {
                     return (
-                      <RestaurantCard
-                        restaurant={restaurant?.info}
-                        key={restaurant?.info?.id}
-                      />
+                      <div key={restaurant?.info?.id}>
+                        {restaurant?.info?.promoted ? (
+                          <PromotedRestaurantCard
+                            restaurant={restaurant?.info}
+                          />
+                        ) : (
+                          <RestaurantCard restaurant={restaurant?.info} />
+                        )}
+                      </div>
                     );
                   })
             }

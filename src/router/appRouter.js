@@ -1,4 +1,4 @@
-import { lazy, Suspense, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { createBrowserRouter, Outlet } from "react-router-dom";
 import { AuthProvider } from "../context/AuthContext";
 import { RestaurantProvider } from "../context/RestaurantContext";
@@ -23,12 +23,37 @@ const MainLayout = () => {
   const isOnline = useOnlineStatus();
   const [retryCount, setRetryCount] = useState(0);
 
+  useEffect(() => {
+    const savedCartItems = localStorage.getItem("cartItems");
+    if (savedCartItems) {
+      try {
+        setCartItems(JSON.parse(savedCartItems));
+      } catch (error) {
+        console.error("Error parsing saved cart items:", error);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+  }, [cartItems]);
+
   const addToCart = (item) => {
-    setCartItems((prevItems) => [...prevItems, item]);
+    // Generate a unique cart item ID to prevent duplicate keys
+    const cartItemId = `${item.id}_${Date.now()}`;
+    const itemWithUniqueId = {
+      ...item,
+      cartItemId, // Add a unique cartItemId for each cart item
+    };
+    setCartItems([...cartItems, itemWithUniqueId]);
   };
 
-  const removeFromCart = (item) => {
-    setCartItems((prevItems) => prevItems.filter((i) => i.id !== item.id));
+  const removeFromCart = (cartItemId) => {
+    setCartItems(cartItems.filter((item) => item.cartItemId !== cartItemId));
+  };
+
+  const clearCart = () => {
+    setCartItems([]);
   };
 
   const handleRetry = () => {
@@ -43,7 +68,9 @@ const MainLayout = () => {
   return (
     <AuthProvider>
       <RestaurantProvider>
-        <CartContext.Provider value={{ cartItems, addToCart, removeFromCart }}>
+        <CartContext.Provider
+          value={{ cartItems, addToCart, removeFromCart, clearCart }}
+        >
           <div className="app">
             <Header />
             <Outlet />

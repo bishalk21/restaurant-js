@@ -43,4 +43,18 @@ const RestaurantCard = ({ restaurant }) => {
   );
 };
 
+// high order component
+export const withPromotedLabel = (RestaurantCard) => {
+  return (props) => {
+    return (
+      <div className="promoted-wrapper">
+        <div className="promoted-label">
+          <span>Promoted</span>
+        </div>
+        <RestaurantCard {...props} />
+      </div>
+    );
+  };
+};
+
 export default RestaurantCard;
