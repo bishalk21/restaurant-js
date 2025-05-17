@@ -32,19 +32,24 @@ const RestaurantMenus = () => {
         //  847177
         const json = await data.json();
 
-        const menuCards =
-          json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+        json?.data?.cards?.forEach((item) => {
+          if (item?.card?.card?.["@type"]?.includes("v2.Restaurant")) {
+            const restaurant = item?.card?.card?.info;
+            setRestaurantInfo(restaurant);
+          }
 
-        const resCuisines = allCuisines(menuCards);
+          if (item?.groupedCard?.cardGroupMap?.REGULAR?.cards) {
+            const restaurant = item?.groupedCard?.cardGroupMap?.REGULAR?.cards;
+            const resCuisines = allCuisines(restaurant);
+            setRestaurantMenuCuisines(resCuisines);
 
-        setRestaurantInfo(json?.data?.cards[2]?.card?.card?.info);
-        setRestaurantMenuCuisines(resCuisines);
-
-        const initialExpandedCategoriesState = {};
-        resCuisines?.forEach((category) => {
-          initialExpandedCategoriesState[category?.title] = true;
+            const initialExpandedCategoriesState = {};
+            resCuisines?.forEach((category) => {
+              initialExpandedCategoriesState[category?.title] = true;
+            });
+            setExpandedCategories(initialExpandedCategoriesState);
+          }
         });
-        setExpandedCategories(initialExpandedCategoriesState);
       } catch (error) {
         console.error("Error fetching restaurant:", error);
       } finally {

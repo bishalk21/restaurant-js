@@ -8,6 +8,11 @@ import { useRestaurants } from "../../context/RestaurantContext";
 const HomePageContext = () => {
   const { restaurants, setRestaurants } = useRestaurants();
 
+  // unique key for each restaurant
+  const uniqueKey = (restaurant) => {
+    return restaurant?.info?.id + Math.random();
+  };
+
   // high order component to add promoted label
   const PromotedRestaurantCard = withPromotedLabel(RestaurantCard);
 
@@ -56,7 +61,7 @@ const HomePageContext = () => {
                     })
                 : restaurants?.map((restaurant) => {
                     return (
-                      <div key={restaurant?.info?.id}>
+                      <div key={uniqueKey(restaurant)}>
                         {restaurant?.info?.promoted ? (
                           <PromotedRestaurantCard
                             restaurant={restaurant?.info}

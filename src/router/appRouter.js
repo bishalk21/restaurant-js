@@ -40,7 +40,7 @@ const MainLayout = () => {
 
   const addToCart = (item) => {
     // Generate a unique cart item ID to prevent duplicate keys
-    const cartItemId = `${item.id}_${Date.now()}`;
+    const cartItemId = `${item.id}_${Date.now()}`; // date.now() = current timestamp(in milliseconds)
     const itemWithUniqueId = {
       ...item,
       cartItemId, // Add a unique cartItemId for each cart item

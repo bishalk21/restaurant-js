@@ -31,18 +31,28 @@ export const RestaurantProvider = ({ children }) => {
 
     try {
       const response = await axios.get(RESTAURANT_API_URI);
-      const data =
-        response?.data?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants;
+      const data = response?.data?.data?.cards;
 
-      if (data) {
-        setRestaurants(data);
-      } else {
-        console.log(
-          "No restaurant data found in the response. Using mock data."
-        );
-        setRestaurants(mockRestaurants);
-      }
+      data?.forEach((item) => {
+        if (item?.card?.card?.["@type"]?.includes("v2.GridWidget")) {
+          const gridItems =
+            item?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+          if (gridItems) {
+            gridItems.forEach((restaurant) => {
+              restaurant.info.id = restaurant.info.id;
+              restaurant.info.promoted = true; // Add the promoted property
+            });
+          }
+          setRestaurants((prevRestaurants) => [
+            ...prevRestaurants,
+            ...(gridItems || []),
+          ]);
+        } else if (item?.card?.card?.["@type"]?.includes("RestaurantInfo")) {
+          const restaurant = item?.card?.card?.info;
+          restaurant.promoted = false; // Add the promoted property
+          setRestaurants((prevRestaurants) => [...prevRestaurants, restaurant]);
+        }
+      });
     } catch (error) {
       console.error("Error fetching restaurant data:", error);
       setError("Failed to fetch restaurants. Please try again later.");
