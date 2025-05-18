@@ -66,11 +66,13 @@ const MainLayout = () => {
   }
 
   return (
+    // default value outside the provider
     <AuthProvider>
       <RestaurantProvider>
         <CartContext.Provider
           value={{ cartItems, addToCart, removeFromCart, clearCart }}
         >
+          {/* value passed in provider like from cartItems */}
           <div className="app">
             <Header />
             <Outlet />

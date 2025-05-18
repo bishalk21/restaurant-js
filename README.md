@@ -26,6 +26,7 @@ Hamro Bhojan is built using React.js, but without CRA (Create React App or any o
 - lucide icons from lucide react
 - swiggy api (for restaurant data)
 - axios (for making API calls)
+- redux-toolkit/rtk (for state management)
 
 ## Features
 
@@ -106,4 +107,38 @@ never keep hardcoded data in the component files, always keep it in a separate f
   - demand loading
   - dynamic import
 
+  - import() function
+
+- ContextAPI
+  - global state management
+  - createContext() function
+  - useContext() hook
+  - Provider and Consumer components
+
 ```
+
+### Redux-Toolkit
+
+- install redux-toolkit and react-redux
+- redux-toolkit is a library that provides a set of tools and best practices for managing state in React applications using Redux.
+- it simplifies the process of creating and managing Redux stores, reducers, and actions, making it easier to work with Redux in React applications.
+
+```bash
+npm install @reduxjs/toolkit react-redux
+```
+
+- create a store
+- store is a single source of truth (global state)
+
+- connect the store to the app
+- use Provider component from react-redux to provide the store to the app
+- use useSelector and useDispatch hooks from react-redux to access the store and dispatch actions
+- useSelector is used to select a piece of state from the store
+- useDispatch is used to dispatch actions to the store
+- useSelector is used to read the state from the store
+- useDispatch is used to update the state in the store
+
+- create a slice
+- slice is a piece of the store (a part of the store)
+- slice is a reducer and actions
+- slice is a function that takes the initial state and returns an object with the reducer and actions

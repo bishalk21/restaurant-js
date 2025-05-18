@@ -31,6 +31,7 @@ export const RestaurantProvider = ({ children }) => {
 
     try {
       const response = await axios.get(RESTAURANT_API_URI);
+
       const data = response?.data?.data?.cards;
 
       data?.forEach((item) => {
