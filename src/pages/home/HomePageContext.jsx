@@ -55,7 +55,7 @@ const HomePageContext = () => {
               // if the restaurant data is not available, return a loading state
               restaurants.length === 0
                 ? Array(10)
-                    .fill("")
+                    .fill(null)
                     .map((_, index) => {
                       return <ShimmerRestaurantCard key={`shimmer-${index}`} />;
                     })
