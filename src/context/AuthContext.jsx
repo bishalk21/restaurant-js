@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 
-const AuthContext = createContext({
+export const AuthContext = createContext({
   isLoggedIn: false,
   user: null,
   login: () => {},
@@ -45,5 +45,3 @@ export const AuthProvider = ({ children }) => {
     </AuthContext.Provider>
   );
 };
-
-export default AuthContext;

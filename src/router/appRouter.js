@@ -5,7 +5,7 @@ import { RestaurantProvider } from "../context/RestaurantContext";
 import { useOnlineStatus } from "../context/OnlineStatus";
 import NotFoundPage from "../pages/not-found/NotFoundPage";
 import Header from "../components/header/Header";
-import CartContext from "../context/CartContext";
+// import CartContext from "../context/CartContext";
 import Footer from "../components/footer/Footer";
 import OfflinePage from "../pages/not-found/OfflinePage";
 import SuspenseFallback from "../components/suspense-fallback/SuspenseFallback";
@@ -17,44 +17,49 @@ const RestaurantMenus = lazy(() =>
 );
 const AboutPage = lazy(() => import("../pages/about/AboutPage"));
 const ContactPage = lazy(() => import("../pages/contact/ContactPage"));
+import { useSelector } from "react-redux";
 
 const MainLayout = () => {
   const [cartItems, setCartItems] = useState([]);
   const isOnline = useOnlineStatus();
   const [retryCount, setRetryCount] = useState(0);
 
-  useEffect(() => {
-    const savedCartItems = localStorage.getItem("cartItems");
-    if (savedCartItems) {
-      try {
-        setCartItems(JSON.parse(savedCartItems));
-      } catch (error) {
-        console.error("Error parsing saved cart items:", error);
-      }
-    }
-  }, []);
+  const cart = useSelector((store) => store.cart);
+  const cartItemsFromStore = cart.items;
 
+  // Check if cart items are available in local storage
+  // If not, use the cart items from the Redux store
+  useEffect(() => {
+    const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+    if (storedCartItems.length > 0) {
+      setCartItems(storedCartItems);
+    } else {
+      setCartItems(cartItemsFromStore);
+    }
+  }, [cartItemsFromStore, retryCount]);
+
+  // Store cart items in local storage whenever they change
   useEffect(() => {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  const addToCart = (item) => {
-    // Generate a unique cart item ID to prevent duplicate keys
-    const cartItemId = `${item.id}_${Date.now()}`; // date.now() = current timestamp(in milliseconds)
-    const itemWithUniqueId = {
-      ...item,
-      cartItemId, // Add a unique cartItemId for each cart item
-    };
-    setCartItems([...cartItems, itemWithUniqueId]);
-  };
+  // const addToCart = (item) => {
+  //   // Generate a unique cart item ID to prevent duplicate keys
+  //   const cartItemId = `${item.id}_${Date.now()}`; // date.now() = current timestamp(in milliseconds)
+  //   const itemWithUniqueId = {
+  //     ...item,
+  //     cartItemId, // Add a unique cartItemId for each cart item
+  //   };
+  //   setCartItems([...cartItems, itemWithUniqueId]);
+  // };
 
-  const removeFromCart = (cartItemId) => {
-    setCartItems(cartItems.filter((item) => item.cartItemId !== cartItemId));
-  };
+  // const removeFromCart = (cartItemId) => {
+  //   setCartItems(cartItems.filter((item) => item.cartItemId !== cartItemId));
+  // };
 
-  const clearCart = () => {
-    setCartItems([]);
-  };
+  // const clearCart = () => {
+  //   setCartItems([]);
+  // };
 
   const handleRetry = () => {
     // Force a re-render to check online status again
@@ -66,19 +71,18 @@ const MainLayout = () => {
   }
 
   return (
-    // default value outside the provider
     <AuthProvider>
       <RestaurantProvider>
-        <CartContext.Provider
+        {/* <CartContext.Provider
           value={{ cartItems, addToCart, removeFromCart, clearCart }}
-        >
-          {/* value passed in provider like from cartItems */}
-          <div className="app">
-            <Header />
-            <Outlet />
-            <Footer />
-          </div>
-        </CartContext.Provider>
+        > */}
+        {/* value passed in provider like from cartItems */}
+        <div className="app">
+          <Header />
+          <Outlet />
+          <Footer />
+        </div>
+        {/* </CartContext.Provider> */}
       </RestaurantProvider>
     </AuthProvider>
   );

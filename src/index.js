@@ -5,11 +5,15 @@ import "./index.css";
 import { RouterProvider } from "react-router-dom";
 import appRouter from "./router/appRouter";
 import NotFoundPage from "./pages/not-found/NotFoundPage";
+import { Provider } from "react-redux";
+import store from "./react-redux/store";
 
 const rootElement = document.getElementById("root");
 const root = ReactDOM.createRoot(rootElement);
 root.render(
   <React.StrictMode>
-    <RouterProvider router={appRouter} fallbackElement={<NotFoundPage />} />
+    <Provider store={store}>
+      <RouterProvider router={appRouter} fallbackElement={<NotFoundPage />} />
+    </Provider>
   </React.StrictMode>
 );

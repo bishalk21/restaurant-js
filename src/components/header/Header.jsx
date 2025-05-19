@@ -13,17 +13,20 @@ import {
   Settings,
 } from "lucide-react";
 import "./header.css";
-import CartContext from "../../context/CartContext";
-import AuthContext from "../../context/AuthContext";
+// import CartContext from "../../context/CartContext";
 import SearchBar from "../search-bar/SearchBar";
 import LoginModal from "../login-modal/LoginModal";
 import { useOnlineStatus } from "../../context/OnlineStatus";
+import { AuthContext } from "../../context/AuthContext";
+import { useSelector } from "react-redux";
 
 const Header = () => {
-  const { cartItems } = useContext(CartContext);
+  // const { cartItems } = useContext(CartContext);
   const { isLoggedIn, user, logout } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const cart = useSelector((store) => store.cart);
+  const cartItems = cart.items;
 
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const userMenuRef = useRef(null);

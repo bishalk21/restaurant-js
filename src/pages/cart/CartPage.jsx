@@ -1,13 +1,23 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ShoppingCart, Trash2, ArrowRight, ShoppingBag } from "lucide-react";
-import CartContext from "../../context/CartContext";
+// import CartContext from "../../context/CartContext";
 import { RESTAURANT_IMAGE_URI } from "../../utils/constants.js";
 import "./cart.css";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  clearCart,
+  removeFromCart,
+} from "../../react-redux/slices/cartSlice.js";
 
 const CartPage = () => {
-  const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
+  // const { cartItems, removeFromCart, clearCart } = useContext(CartContext);
   const [isCheckingOut, setIsCheckingOut] = useState(false);
+
+  const cart = useSelector((store) => store.cart);
+  const cartItems = cart.items;
+
+  const dispatch = useDispatch();
 
   // Calculate subtotal
   const subtotal = cartItems.reduce((total, item) => total + item?.price, 0);
@@ -22,7 +32,8 @@ const CartPage = () => {
   const total = subtotal + deliveryFee + tax;
 
   const handleRemoveItem = (cartItemId) => {
-    removeFromCart(cartItemId);
+    dispatch(removeFromCart(cartItemId));
+    // removeFromCart(cartItemId);
     // Optionally, you can show a confirmation message or toast
     // after removing the item from the cart
     alert("Item removed from cart");
@@ -36,7 +47,8 @@ const CartPage = () => {
       alert("Checkout successful! Your order has been placed.");
       // In a real app, you would redirect to a confirmation page
       setIsCheckingOut(false);
-      clearCart();
+      // clearCart();
+      dispatch(clearCart());
     }, 2000);
   };
 
@@ -79,7 +91,9 @@ const CartPage = () => {
                         </div>
                         <div className="item-details">
                           <h3 className="item-name">{item.name}</h3>
-                          <p className="item-description">{item.description}</p>
+                          <p className="item-description">
+                            {item.description || item.ratings}
+                          </p>
                         </div>
                         <div className="item-price">
                           ${item.price.toFixed(2)}

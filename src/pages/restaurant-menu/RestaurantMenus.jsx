@@ -1,5 +1,5 @@
 import ShimmerRestaurantMenus from "../../components/shimmer-ui-card/ShimmerRestaurantMenus";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { ChevronDown, ChevronUp, Clock, Leaf, Plus, Star } from "lucide-react";
 import {
   RESTAURANT_IMAGE_URI,
@@ -7,7 +7,9 @@ import {
 } from "../../utils/constants";
 import "./restaurant-menu.css";
 import { useParams } from "react-router-dom";
-import CartContext from "../../context/CartContext";
+// import CartContext from "../../context/CartContext";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../../react-redux/slices/cartSlice";
 
 const RestaurantMenus = () => {
   const { restaurantId } = useParams();
@@ -15,8 +17,9 @@ const RestaurantMenus = () => {
   const [expandedCategories, setExpandedCategories] = useState({});
   const [activeCategory, setActiveCategory] = useState("All");
   const [restaurantInfo, setRestaurantInfo] = useState(null);
-  const { addToCart } = useContext(CartContext);
+  // const { addToCart } = useContext(CartContext);
   const [isLoading, setIsLoading] = useState(true);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchMenus = async () => {
@@ -128,10 +131,16 @@ const RestaurantMenus = () => {
   //     ?.cards[2]?.card?.card;
 
   const handleAddToCart = (cuisine) => {
-    addToCart({
-      ...cuisine,
-      restaurantName: restaurantInfo?.name,
-    });
+    // addToCart({
+    //   ...cuisine,
+    //   restaurantName: restaurantInfo?.name,
+    // });
+    dispatch(
+      addToCart({
+        ...cuisine,
+        restaurantName: restaurantInfo?.name,
+      })
+    );
   };
 
   const handleToggleCategory = (categoryTitle) => {

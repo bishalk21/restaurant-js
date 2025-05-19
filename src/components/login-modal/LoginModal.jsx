@@ -1,7 +1,7 @@
 import { useState, useContext, useRef, useEffect } from "react";
 import { X } from "lucide-react";
-import AuthContext from "../../context/AuthContext";
 import "./login-modal.css";
+import { AuthContext } from "../../context/AuthContext";
 
 const LoginModal = ({ isOpen, onClose }) => {
   const [isLoginForm, setIsLoginForm] = useState(true);
