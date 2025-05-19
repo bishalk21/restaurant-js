@@ -5,11 +5,12 @@ import { AuthContext } from "../../context/AuthContext";
 
 const LoginModal = ({ isOpen, onClose }) => {
   const [isLoginForm, setIsLoginForm] = useState(true);
-  const [formData, setFormData] = useState({
+  const initialState = {
     name: "",
     email: "",
     password: "",
-  });
+  };
+  const [formData, setFormData] = useState(initialState);
   const [error, setError] = useState("");
   const modalRef = useRef(null);
   const { login } = useContext(AuthContext);
@@ -36,6 +37,7 @@ const LoginModal = ({ isOpen, onClose }) => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    // Update the form data state based on the input field
     setFormData({
       ...formData,
       [name]: value,
