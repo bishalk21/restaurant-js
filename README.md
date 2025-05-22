@@ -272,3 +272,78 @@ npm install --save-dev jest-environment-jsdom
 ```js
 +  testEnvironment: 'jsdom',
 ```
+
+- jest-dom is a set of custom matchers for Jest that can be used to extend Jest's built-in assertions
+
+```bash
+npm install --save-dev @testing-library/jest-dom
+```
+
+```bash
+- "describe" is used to group related tests together
+- we can use "it" or "test" to define a test case ("test" is an alias for "it")
+- "it" is a function that takes a string (the name of the test) and a function (the test itself)
+- "expect" is a function that takes a value and returns an object with matchers (like toBe, toEqual, etc.) allowing us to make assertions about the value
+```
+
+## Testing time errors
+
+### rendering errors: component not rendering render(<Component />)
+
+- Solution:
+
+  - @babel/preset-react is not installed to transform the JSX code into JavaScript code
+  - @babel/plugin-transform-runtime is not installed to transform the async/await code into JavaScript code
+
+  ### import errors: import { render } from "@testing-library/react" (importing react-testing-library)
+
+  - Solution:
+    - @testing-library/react is not installed
+    - @testing-library/jest-dom is not installed, not imported in the test file
+    - jest-environment-jsdom is not installed, not configured in the jest.config.js file
+    - @testing-library/jest-dom providers custom matchers for Jest like toBeInTheDocument, toHaveTextContent, toHaveClass, etc.
+
+### react-redux (rtk errors): useSelector, useDispatch, Provider
+
+- Solution:
+  - react-redux is not installed
+  - redux-toolkit is not installed
+  - Provider component is not imported in the test file
+  - useSelector and useDispatch hooks are not imported in the test file
+  - jest.mock() is not used to mock the redux store in the test file
+
+### css errors: css is not working
+
+- Solution:
+  - identity-obj-proxy is not installed to mock the CSS modules (to prevent CSS modules from being transformed into JavaScript objects)
+  - jest.config.js file is not configured properly
+  - parcelrc file is not configured properly
+
+```js
+ moduleNameMapper: {
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy",
+  },
+```
+
+### TypeError: Cannot destructure property 'basename' of 'React\_\_namespace.useContext(...)' as it is null.
+
+- Solution:
+  - BrowserRouter is not imported or not used to wrap the component in the test file
+  - createBrowserRouter is not imported or not used to wrap the component in the test file
+
+### async/await errors: async/await is not working in the test file
+
+- Solution:
+  - @babel/plugin-transform-runtime is not installed to transform the async/await code into JavaScript code
+  - @babel/preset-env is not installed to transform the async/await code into JavaScript code
+  - babel.config.json file is not configured properly
+  - jest.config.js file is not configured properly
+  - parcelrc file is not configured properly
+
+### coverage errors: coverage is not working
+
+- Solution:
+  - babel-plugin-istanbul is not installed to instrument the code for coverage
+  - babel.config.json file is not configured properly
+  - jest.config.js file is not configured properly
+  - parcelrc file is not configured properly
