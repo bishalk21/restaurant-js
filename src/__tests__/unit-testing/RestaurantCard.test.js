@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
-import store from "../react-redux/store";
-import RestaurantCard from "../components/restaurant-card/RestaurantCard";
-import MOCK_DATA from "../utils/resCardMock.json";
+import store from "../../react-redux/store";
+import RestaurantCard from "../../components/restaurant-card/RestaurantCard";
+import MOCK_DATA from "../../utils/resCardMock.json";
 import "@testing-library/jest-dom";
 
 it("Should render RestaurantCard component with props", () => {

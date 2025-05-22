@@ -1,4 +1,4 @@
-import { sumTest } from "../sumTest";
+import { sumTest } from "../../sumTest";
 
 test("Description of the test: Sum Function should calculate the sum of two numbers", () => {
   // code to be tested

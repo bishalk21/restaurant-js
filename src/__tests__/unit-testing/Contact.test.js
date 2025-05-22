@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import ContactPage from "../pages/contact/ContactPage";
+import ContactPage from "../../pages/contact/ContactPage";
 import "@testing-library/jest-dom";
 
 // suppose there are 20 test cases in the file
