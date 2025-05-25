@@ -19,7 +19,7 @@ const AboutPage = lazy(() => import("../pages/about/AboutPage"));
 const ContactPage = lazy(() => import("../pages/contact/ContactPage"));
 import { useSelector } from "react-redux";
 
-const MainLayout = () => {
+export const MainLayout = () => {
   const [cartItems, setCartItems] = useState([]);
   const isOnline = useOnlineStatus();
   const [retryCount, setRetryCount] = useState(0);

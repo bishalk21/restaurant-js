@@ -97,15 +97,22 @@ const SearchBar = () => {
           type="text"
           placeholder="Search restaurants, food, recipes..."
           value={query}
+          name="Search"
+          autoComplete="off"
           onChange={handleInputChange}
           onFocus={() => setShowSuggestions(true)}
           className="search-input"
+          aria-label="Search"
+          data-testid="search-input"
         />
         <button
           className="search-button"
+          type="button"
+          aria-label="Search"
+          data-testid="search-button"
           onClick={() => setShowSuggestions(true)}
         >
-          <Search size={20} />
+          <Search size={20} className="search-icon" name="Search" />
         </button>
       </div>
 
@@ -116,6 +123,7 @@ const SearchBar = () => {
               key={suggestion.info.name}
               className="suggestion-item"
               onClick={() => handleSuggestionClick(suggestion)}
+              data-testid="suggestion-item"
             >
               <img
                 src={

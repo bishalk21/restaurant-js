@@ -347,3 +347,47 @@ npm install --save-dev @testing-library/jest-dom
   - babel.config.json file is not configured properly
   - jest.config.js file is not configured properly
   - parcelrc file is not configured properly
+
+### fetch/axios errors: fetch/axios is not working in the test file
+
+    - Solution:
+
+- jest.mock() is not used to mock the fetch/axios in the test file
+- jest-fetch-mock is not installed to mock the fetch in the test file
+
+```js
+// jest does not understand fetch or async/await
+// because it is not a part of the js standard library and it is provided by the browser
+// so we need to mock it using global.fetch
+global.fetch = jest.fn(() => {
+  return Promise.resolve({
+    json: () => Promise.resolve(data),
+  });
+});
+```
+
+### to make the test file run in watch mode or interactive mode
+
+in script tag in package.json
+
+```json
+"scripts": {
+  "watch-test": "jest --watchAll"
+}
+```
+
+```bash
+npm test -- --watch
+```
+
+- or
+
+```bash
+npm test -- --watchAll
+```
+
+### to make the test file run in coverage mode
+
+```bash
+npm test -- --coverage
+```

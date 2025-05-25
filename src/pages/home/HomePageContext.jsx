@@ -50,18 +50,26 @@ const HomePageContext = () => {
       <section className="featured-restaurants">
         <div className="container">
           <h2 className="section-title">Featured Restaurants</h2>
-          <div className="restaurants-grid">
+          <div className="restaurants-grid" data-testid="restaurants-grid">
             {
               // if the restaurant data is not available, return a loading state
-              restaurants.length === 0
+              restaurants?.length === 0
                 ? Array(10)
                     .fill(null)
                     .map((_, index) => {
-                      return <ShimmerRestaurantCard key={`shimmer-${index}`} />;
+                      return (
+                        <ShimmerRestaurantCard
+                          key={`shimmer-${index}`}
+                          data-testid="no-results-message"
+                        />
+                      );
                     })
                 : restaurants?.map((restaurant) => {
                     return (
-                      <div key={uniqueKey(restaurant)}>
+                      <div
+                        key={uniqueKey(restaurant)}
+                        data-testid="restaurant-card"
+                      >
                         {restaurant?.info?.promoted ? (
                           <PromotedRestaurantCard
                             restaurant={restaurant?.info}

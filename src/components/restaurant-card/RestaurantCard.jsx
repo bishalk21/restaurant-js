@@ -7,7 +7,7 @@ const RestaurantCard = ({ restaurant }) => {
   const { id, name, cloudinaryImageId, cuisines, avgRating, sla } = restaurant;
 
   return (
-    <div className="restaurant-card">
+    <div className="restaurant-card" data-testid="restaurant-card">
       <div className="restaurant-image">
         <img
           src={
@@ -49,7 +49,7 @@ export const withPromotedLabel = (RestaurantCard) => {
     return (
       <div className="promoted-wrapper">
         <div className="promoted-label">
-          <span>Promoted</span>
+          <span data-testid="promoted-wrapper">Promoted</span>
         </div>
         <RestaurantCard {...props} />
       </div>

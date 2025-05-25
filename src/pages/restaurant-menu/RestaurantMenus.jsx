@@ -172,7 +172,7 @@ const RestaurantMenus = () => {
   }
 
   return (
-    <div className="restaurant-menu-page">
+    <div className="restaurant-menu-page" data-testid="restaurant-menu">
       <div className="container">
         {/* Restaurant Header */}
         <div className="restaurant-header">
