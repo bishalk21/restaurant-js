@@ -115,6 +115,8 @@ never keep hardcoded data in the component files, always keep it in a separate f
   - useContext() hook
   - Provider and Consumer components
 
+  Reacts class based rendering cycle is not equivalent to functional component rendering cycle with hooks.
+
 ```
 
 ### Redux-Toolkit
@@ -390,4 +392,37 @@ npm test -- --watchAll
 
 ```bash
 npm test -- --coverage
+```
+
+## Class Based Components
+
+- Class based components are the older way of writing React components.
+
+- Process of creating a class based component:
+  - Create a class that extends React.Component
+  - Implement a render() method that returns the JSX to be rendered
+  - Use the component's state and lifecycle methods to manage the component's behavior
+- Class based components are less commonly used in modern React development, as functional components with hooks provide a more concise and easier way to manage state and lifecycle methods.
+
+- Lifecycle methods in class based components:
+  - `When a component is rendered, first the constructor is called, then the render method is called, and finally the componentDidMount method is called`.
+  - componentDidMount: called after the component is mounted
+  - componentDidUpdate: called after the component is updated
+  - componentWillUnmount: called before the component is unmounted
+  - shouldComponentUpdate: called before the component is updated, used to optimize performance
+  - getDerivedStateFromProps: called before the render method, used to update state based on props
+- setState: used to update the component's state
+- this.state: used to access the component's state
+- this.props: used to access the component's props
+- this.setState: used to update the component's state
+- this.forceUpdate: used to force the component to re-render
+- this.context: used to access the component's context
+- this.refs: used to access the component's refs
+- this.props.children: used to access the component's children
+- this.state is an object that contains the component's state
+
+- `if parent component is class-based, then first the parent component's constructor is called, then the parent's render method is called, then the parent's componentDidMount method is called, then the child component's constructor is called, then the child's render method is called, and finally the child's componentDidMount method is called.`
+
+```
+ComponentWillUnmount: called before the component is unmounted or if we navigate to another page or leave the component
 ```

@@ -15,6 +15,7 @@ const CartPage = lazy(() => import("../pages/cart/CartPage"));
 const RestaurantMenus = lazy(() =>
   import("../pages/restaurant-menu/RestaurantMenus")
 );
+const AboutClassBasedPage = lazy(() => import("../class-based/AboutPage.jsx"));
 const AboutPage = lazy(() => import("../pages/about/AboutPage"));
 const ContactPage = lazy(() => import("../pages/contact/ContactPage"));
 import { useSelector } from "react-redux";
@@ -131,6 +132,14 @@ const appRouter = createBrowserRouter([
         element: (
           <Suspense fallback={<SuspenseFallback type="about" />}>
             <AboutPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/about-class-based",
+        element: (
+          <Suspense fallback={<SuspenseFallback type="about-class-based" />}>
+            <AboutClassBasedPage />
           </Suspense>
         ),
       },
